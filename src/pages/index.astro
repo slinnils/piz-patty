@@ -1,17 +1,41 @@
 ---
-
+import "../styles/global.css";
+import BaseLayout from "../layouts/BaseLayout.astro";
 ---
 
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<link rel="icon" href="/favicon.ico" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
-	</head>
-	<body>
-		<h1>Astro</h1>
-	</body>
-</html>
+<BaseLayout>
+  <section class="hero-wrapper">
+    <div>
+      <h2>Piz Patty</h2>
+      <p>Dein Burger-Gipfel in Chur.</p>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .hero-wrapper {
+    position: relative;
+    left: 0;
+    top: calc(-120px + -32px);
+    z-index: -10;
+    background-image: url("../../src/assets/hero-burger.jpg");
+    background-size: cover;
+    background-position: right 0 bottom 35%;
+    height: 80vh;
+  }
+
+  .hero-wrapper > div {
+	position: absolute;
+	bottom: 100px;
+	left: 50px;
+	color: var(--color-piz-text-bright);
+  }
+
+  .hero-wrapper h2 {
+	font-size: clamp(3rem, 10vw, 5rem);
+  }
+
+  .hero-wrapper p {
+	font-size: clamp(1rem, 5vw, 3rem);
+  }
+</style>
