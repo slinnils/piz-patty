@@ -51,6 +51,7 @@
     opacity: 1;
     pointer-events: auto;
   }
+
   #menu-toggle {
     color: var(--color-piz-text-bright);
     font-size: 1.8rem;
@@ -62,14 +63,14 @@
     position: fixed;
     top: 0;
     right: 0;
-    height: 100vh;
-    width: 75%;
+    height: 100dvh;
+    width: 70%;
 
     font-size: clamp(1.3rem, 6.5vw, 2rem);
 
     background-color: var(--color-piz-card-bg);
     color: var(--color-piz-text-bright);
-    backdrop-filter: blur(5px);
+    backdrop-filter: blur(7px);
 
     transform: translateX(100%);
     transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
@@ -81,12 +82,59 @@
     list-style: none;
   }
 
+  @media (min-width: 800px) {
+    #nav-links {
+      position: static;
+      font-size: clamp(0.8rem, 10vw, 1.7rem);
+      transform: translateX(0%);
+      width: 100%;
+
+      color: var(--color-piz-accent);
+
+      background-color: transparent;
+      backdrop-filter: blur(0px);
+
+      height: auto;
+      flex-direction: row;
+      gap: 2rem;
+    }
+  }
+
   #nav-links li {
     opacity: 0;
     transform: translateX(20px);
     transition:
       opacity 0.3s ease,
       transform 0.3s ease;
+  }
+
+  #nav-links a {
+  position: relative;
+  overflow: hidden;
+  display: inline-block;
+}
+
+  #nav-links a::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background-color: var(--color-piz-accent);
+  transform: translateX(-100%);
+  transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+  @media (min-width: 800px) {
+    #nav-links li {
+      transform: translateX(0);
+      opacity: 1;
+    }
+
+    #nav-links a:hover::after {
+  transform: translateX(0);
+}
   }
 
   #nav-links.open li {
@@ -114,7 +162,7 @@
     transform: translateX(0);
   }
 
-  @media (min-width: 750px) {
+  @media (min-width: 800px) {
     #menu-toggle {
       display: none;
     }
