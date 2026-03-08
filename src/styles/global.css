@@ -17,9 +17,34 @@
   font-variation-settings: "wdth" 100;
 }
 
-h1, h2, h3 {
+h1,
+h2,
+h3 {
   font-family: "Sour Gummy", sans-serif;
   font-optical-sizing: auto;
   font-weight: 500;
   font-style: normal;
+}
+
+.primary-btn {
+  backdrop-filter: blur(7px);
+  border: 3px solid var(--color-piz-accent);
+  border-radius: 25px;
+
+  padding: 0.3rem 0.9rem;
+  cursor: pointer;
+
+  font-size: clamp(0.9rem, 4vw, 1.5rem);
+  font-weight: 500;
+  text-transform: uppercase;
+  color: var(--color-piz-text-bright);
+}
+
+.primary-btn:hover {
+  background-color: var(--color-piz-accent);
+  backdrop-filter: blur(0);
+  color: var(--color-piz-bg);
+}
+
+.secondary-btn {
 }

@@ -2,7 +2,7 @@
 import MainNavigation from "./MainNavigation.astro";
 ---
 
-<div class="header-container">
+<header class="header-container">
   <img
     id="logo-img"
     src="../../src/assets/piz-patty-logo.png"
@@ -11,9 +11,15 @@ import MainNavigation from "./MainNavigation.astro";
   />
   {/*<a href="/"><h1 class="text-5xl text-piz-text-bright">Piz Patty</h1></a>*/}
   <MainNavigation />
-</div>
+</header>
 
 <style>
+  header {
+  background: linear-gradient(to bottom, rgba(0,0,0,0.6), transparent);
+  z-index: 90;
+  padding: 1rem 0 0 1.5rem;
+  }
+
   #logo-img {
     width: clamp(80px, 20vw, 120px);
     height: clamp(80px, 20vw, 120px);
@@ -23,11 +29,11 @@ import MainNavigation from "./MainNavigation.astro";
   h1 {
     font-size: clamp(2rem, 6vw, 3rem);
     color: var(--color-piz-accent);
+    text-shadow: 0 2px 8px red;
   }
 
   .header-container {
     display: flex;
     gap: 1rem;
-    margin: 1rem 0 1rem 1rem;
   }
 </style>

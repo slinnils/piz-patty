@@ -10,10 +10,9 @@
   <div id="overlay" class="overlay"></div>
 
   <ul id="nav-links">
-    <li><a href="/">Startseite</a></li>
+    <li><a href="/">Home</a></li>
     <li><a href="/menu">Menü</a></li>
-    <li><a href="/kontakt">Kontakt & Standort</a></li>
-    <li><a href="/about">Über Uns</a></li>
+    <li><a href="/kontakt">Kontakt</a></li>
     <li><a href="/impressum">Impressum</a></li>
   </ul>
 </nav>
@@ -85,7 +84,7 @@
   @media (min-width: 800px) {
     #nav-links {
       position: static;
-      font-size: clamp(0.8rem, 10vw, 1.7rem);
+      font-size: clamp(1.2rem, 2.3vw, 2rem);
       transform: translateX(0%);
       width: 100%;
 
@@ -109,22 +108,23 @@
   }
 
   #nav-links a {
-  position: relative;
-  overflow: hidden;
-  display: inline-block;
-}
+    position: relative;
+    overflow: hidden;
+    display: inline-block;
+    text-shadow: 0 2px 8px rgba(0, 0, 0, 0.7);
+  }
 
   #nav-links a::after {
-  content: "";
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  width: 100%;
-  height: 2px;
-  background-color: var(--color-piz-accent);
-  transform: translateX(-100%);
-  transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
-}
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background-color: var(--color-piz-accent);
+    transform: translateX(-100%);
+    transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+  }
 
   @media (min-width: 800px) {
     #nav-links li {
@@ -133,8 +133,8 @@
     }
 
     #nav-links a:hover::after {
-  transform: translateX(0);
-}
+      transform: translateX(0);
+    }
   }
 
   #nav-links.open li {
