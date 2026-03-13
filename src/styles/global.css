@@ -68,3 +68,8 @@ h3 {
   }
 
 }
+
+.main-text{
+    font-size: clamp(2rem, 3vw, 3rem);
+    color: var(--color-piz-text-mute);
+}

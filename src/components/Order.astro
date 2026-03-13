@@ -1,0 +1,83 @@
+---
+
+---
+
+<div class="order-section">
+  <ul class="link-group">
+    <li class="eat-link">
+      <a href="https://www.just-eat.ch/speisekarte/bargers-kebab-new"></a>
+    </li>
+
+    <li class="uber-link">
+      <a
+        href="https://www.ubereats.com/ch/store/bargers-kebab/yh12PG5fXdqjyLLXaRrdGg?utm_campaign=CM2508147-search-free-nonbrand-google-pas_e_all_acq_Global&utm_medium=search-free-nonbrand&utm_source=google-pas"
+      ></a>
+    </li>
+  </ul>
+
+  <p class="main-text">Bequem nach Hause liefern oder bei Uns abholen</p>
+</div>
+
+<style>
+  p {
+    text-align: center;
+    padding-bottom: 2rem;
+  }
+
+  .order-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+    margin-bottom: 3rem;
+  }
+
+  .link-group {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    width: 100%;
+  }
+
+  @media (min-width: 800px) {
+    .order-section {
+      flex-direction: row;
+    }
+  }
+
+  .eat-link {
+    background-image: url("../assets/just-eat-logo.webp");
+    background-size: cover;
+    background-position: right 0 bottom 35%;
+    height: 80px;
+    width: 80px;
+    border-radius: 15px;
+  }
+
+  .uber-link {
+    background-image: url("../assets/uber-logo.webp");
+    background-size: cover;
+    background-position: right 0 bottom 35%;
+    height: 80px;
+    width: 80px;
+    border-radius: 15px;
+  }
+
+  @media (min-width: 800px) {
+    .uber-link {
+      height: 150px;
+      width: 150px;
+    }
+    .eat-link {
+      height: 150px;
+      width: 150px;
+    }
+  }
+
+  a {
+    display: block;
+    width: 100%;
+    height: 100%;
+    cursor: pointer;
+  }
+</style>

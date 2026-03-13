@@ -1,5 +1,9 @@
 ---
+import { sanityClient } from "sanity:client";
 
+const openingHours = await sanityClient.fetch(
+  '*[_type == "openingHours"][0]{montagBisDonnerstag, freitagUndSamstag, sonntag}',
+);
 ---
 
 <div class="hrs-container">
@@ -7,30 +11,30 @@
   <dl class="opening-hours">
     <div>
       <dt>Montag - Donnerstag:</dt>
-      <dd>11:00 - 22:00</dd>
+      <dd>{openingHours.montagBisDonnerstag}</dd>
     </div>
 
     <div>
       <dt>Freitag & Samstag:</dt>
-      <dd>11:00 - 23:00</dd>
+      <dd>{openingHours.freitagUndSamstag}</dd>
     </div>
 
     <div>
       <dt>Sonntag:</dt>
-      <dd>11:00 - 22:00</dd>
+      <dd>{openingHours.sonntag}</dd>
     </div>
   </dl>
 </div>
 <div class="opening-hrs-text">
-  <p>Komm vorbei</p>
-  <p>-</p>
-  <p>wir sind da!</p>
+  <p class="main-text">Komm vorbei</p>
+  <p class="main-text">-</p>
+  <p class="main-text">Wir sind da!</p>
 </div>
 
 <style>
   .hrs-container {
-    width: clamp(200px, 80%, 600px);
-    margin: 2rem auto 0.5rem auto ;
+    width: 100%;
+    margin: 2rem 0 0.5rem 0;
     background-color: var(--color-piz-card-bg);
     padding: 1rem 2rem;
     border: 1px solid var(--color-piz-accent);
@@ -60,9 +64,18 @@
     color: var(--color-piz-accent);
   }
 
-  @media(min-width: 800px){
-    .opening-hours dt{
-      font-size: clamp(1rem, 30vw, 2rem);
+  @media (min-width: 800px) {
+    .opening-hours dt,
+    dd {
+      font-size: clamp(1rem, 50vw, 1.8rem);
+    }
+
+    .hrs-container {
+      width: clamp(200px, 80%, 800px);
+    }
+
+    h3 {
+      font-size: clamp(1.5rem, 50vw, 2rem);
     }
   }
 
@@ -70,14 +83,6 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    color: var(--color-piz-text-mute);
     width: clamp(300px, 10vw, 500px);
-    font-size: clamp(2rem, 3vw, 3rem);
-  }
-
-  @media (min-width: 800px) {
-    .opening-hrs-text {
-      margin: auto;
-    }
   }
 </style>
