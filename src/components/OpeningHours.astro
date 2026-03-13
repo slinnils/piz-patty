@@ -1,0 +1,77 @@
+---
+
+---
+
+<div class="hrs-container">
+  <h3>Unsere Öffnungszeiten:</h3>
+  <dl class="opening-hours">
+    <div>
+      <dt>Montag - Donnerstag:</dt>
+      <dd>11:00 - 22:00</dd>
+    </div>
+
+    <div>
+      <dt>Freitag & Samstag:</dt>
+      <dd>11:00 - 23:00</dd>
+    </div>
+
+    <div>
+      <dt>Sonntag:</dt>
+      <dd>11:00 - 22:00</dd>
+    </div>
+  </dl>
+</div>
+<div class="opening-hrs-text">
+  <p>Komm vorbei</p>
+  <p>-</p>
+  <p>wir sind da!</p>
+</div>
+
+<style>
+  .hrs-container {
+    width: clamp(200px, 80%, 600px);
+    margin: 2rem auto 0.5rem auto ;
+    background-color: var(--color-piz-card-bg);
+    padding: 1rem 2rem;
+    border: 1px solid var(--color-piz-accent);
+    border-radius: 8px;
+    box-shadow: 0px 3px 18px #d4aa3773;
+  }
+
+  h3 {
+    font-size: 1.5rem;
+    font-weight: 400;
+  }
+
+  .opening-hours div {
+    display: flex;
+    justify-content: space-between;
+    padding: 0.75rem 0;
+    border-bottom: 3px solid var(--color-piz-card-bg);
+  }
+
+  .opening-hours dt {
+    color: var(--color-piz-text-bright);
+    font-weight: 300;
+    margin-right: 1rem;
+  }
+
+  .opening-hours dd {
+    color: var(--color-piz-accent);
+  }
+
+  .opening-hrs-text {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: var(--color-piz-text-mute);
+    width: clamp(300px, 10vw, 500px);
+    font-size: clamp(2rem, 3vw, 3rem);
+  }
+
+  @media (min-width: 800px) {
+    .opening-hrs-text {
+      margin: auto;
+    }
+  }
+</style>

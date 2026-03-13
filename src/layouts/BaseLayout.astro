@@ -1,7 +1,7 @@
 ---
 import "../styles/global.css";
 import Footer from "../components/Footer.astro";
-import Header from "../components/Header.astro"
+import Header from "../components/Header.astro";
 ---
 
 <html lang="de">
@@ -19,13 +19,13 @@ import Header from "../components/Header.astro"
     />
   </head>
   <body class="bg-piz-bg">
+    <div id="header">
+    <Header />
+  </div>
 
-      <Header />
-   
     <main id="main">
-        <slot/>
+      <slot />
     </main>
-    
   </body>
 
   <footer id="footer">
@@ -36,15 +36,14 @@ import Header from "../components/Header.astro"
 <style>
   body {
     display: grid;
-    grid-template-rows: auto 1fr auto;
+    grid-template-rows: auto auto auto;
     grid-template-columns: 1fr;
-    grid-template-areas: 
-    "header"
-    "main"
-    "footer";
-
+    grid-template-areas:
+      "header"
+      "main"
+      "footer";
     height: 100dvh;
-    width: 100vw;
+    width: 100%;
     max-width: 2000px;
     margin: 0 auto;
   }

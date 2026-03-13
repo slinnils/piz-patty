@@ -77,7 +77,7 @@
     display: flex;
     flex-direction: column;
     gap: 1.5rem;
-    padding: 2rem;
+    padding: 2rem 4rem 2rem 1rem;
     list-style: none;
   }
 
@@ -105,9 +105,18 @@
     transition:
       opacity 0.3s ease,
       transform 0.3s ease;
+    background-color: var(--color-piz-card-bg);
+
+    border-radius: 10px;
+    padding: 0.5rem 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
 
   #nav-links a {
+    text-align: center;
+    flex-grow: 1;
     position: relative;
     overflow: hidden;
     display: inline-block;
@@ -122,7 +131,7 @@
     width: 100%;
     height: 2px;
     background-color: var(--color-piz-accent);
-    transform: translateX(-100%);
+    transform: translateX(-120%);
     transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
   }
 
@@ -130,6 +139,7 @@
     #nav-links li {
       transform: translateX(0);
       opacity: 1;
+      background-color: transparent;
     }
 
     #nav-links a:hover::after {
