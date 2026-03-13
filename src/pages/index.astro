@@ -2,37 +2,31 @@
 import "../styles/global.css";
 import BaseLayout from "../layouts/BaseLayout.astro";
 import OpeningHours from "../components/OpeningHours.astro";
+import Map from "../components/Map.astro";
 ---
 
 <BaseLayout>
+  <section class="hero-wrapper">
+    <div class="hero-text">
+      <h2>Piz Patty</h2>
+      <p>Dein Burger-Gipfel in Chur.</p>
+    </div>
+
+    <div class="btn-group">
+      <a href="/menu" class="primary-btn">Zum Menü</a>
+      <a href="/kontakt" class="primary-btn">Kontakt/ reservation</a>
+    </div>
+  </section>
   <div class="page-container">
-    <section class="hero-wrapper">
-      <div class="hero-text">
-        <h2>Piz Patty</h2>
-        <p>Dein Burger-Gipfel in Chur.</p>
-      </div>
-
-      <div class="btn-group">
-        <a href="/menu" class="primary-btn">Zum Menü</a>
-        <a href="/kontakt" class="primary-btn">Kontakt/ reservation</a>
-      </div>
-    </section>
-
     <section class="opening-hrs">
       <OpeningHours />
     </section>
-    <hr />
+    <hr class="divider1" />
 
     <section class="maps">
-      <iframe
-        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2724.8866859512036!2d9.529103988022067!3d46.847550096718244!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4784c7703541f30d%3A0xde0fbb72e864f7bb!2sBargers%20Kebab!5e1!3m2!1sen!2sch!4v1773391149042!5m2!1sen!2sch"
-        width="300"
-        height="300"
-        style="border:0;"
-        allowfullscreen=""
-        loading="lazy"
-        referrerpolicy="no-referrer-when-downgrade"></iframe>
+      <Map />
     </section>
+    <hr class="divider2" />
   </div>
 </BaseLayout>
 
@@ -42,15 +36,33 @@ import OpeningHours from "../components/OpeningHours.astro";
     grid-template-rows: auto auto;
     grid-template-areas:
       "hero"
-      "opening-hrs";
+      "opening-hrs"
+      "divider1"
+      "maps"
+      "divider2";
+  }
+
+  @media (min-width: 800px) {
+    .page-container {
+      padding: 0 3rem;
+    }
   }
 
   hr {
-    margin: 2rem auto;
+    margin: 3rem auto;
     color: var(--color-piz-accent);
     width: 80vw;
     box-shadow: 0 0px 19px var(--color-piz-accent);
   }
+
+  .divider1{
+    grid-area: divider1;
+  }
+  .divider2{
+    grid-area: divider2;
+  }
+
+
 
   .hero-wrapper {
     top: 0;
@@ -58,7 +70,7 @@ import OpeningHours from "../components/OpeningHours.astro";
     background-image: url("../../src/assets/hero-burger.jpg");
     background-size: cover;
     background-position: right 0 bottom 35%;
-    height: 85vh;
+    height: 55vh;
     width: 100%;
 
     border-bottom: 1px solid var(--color-piz-accent);
@@ -73,6 +85,17 @@ import OpeningHours from "../components/OpeningHours.astro";
     padding-bottom: 2rem;
 
     grid-area: hero;
+  }
+
+  .hero-wrapper::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 150px;
+    background: linear-gradient(to bottom, rgba(0, 0, 0, 0.7), transparent);
+    z-index: 2;
   }
 
   @media (max-width: 600px) {
@@ -126,5 +149,10 @@ import OpeningHours from "../components/OpeningHours.astro";
       justify-content: space-between;
       gap: 1rem;
     }
+  }
+
+  .maps {
+    grid-area: maps;
+    justify-items: center;
   }
 </style>
