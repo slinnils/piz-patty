@@ -1,8 +1,210 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
 import "../styles/global.css";
+import { sanityClient } from "sanity:client";
+import imageUrlBuilder from "@sanity/image-url";
+
+import Order from "../components/Order.astro";
+
+const builder = imageUrlBuilder(sanityClient);
+function urlFor(source) {
+  return builder.image(source);
+}
+
+const items = await sanityClient.fetch(
+  `*[_type == "menu"] | order(category asc, title asc) {
+    _id,
+    title,
+    price,
+    ingredients,
+    allergy,
+    category,
+    image
+  }`,
+);
+
+// Nach Kategorie gruppieren
+const grouped = items.reduce((acc, item) => {
+  const cat = item.category ?? "Sonstiges";
+  if (!acc[cat]) acc[cat] = [];
+  acc[cat].push(item);
+  return acc;
+}, {});
+
+const categoryOrder = ["Burger", "Kebab", "Beilagen", "Desserts", "Getränke"];
+
+const sortedEntries = Object.entries(grouped).sort(
+  ([a], [b]) =>
+    (categoryOrder.indexOf(a) ?? 99) - (categoryOrder.indexOf(b) ?? 99),
+);
 ---
 
 <BaseLayout>
-  <h1>Menü</h1>
+  <div class="menu-container">
+    {
+      sortedEntries.map(([category, dishes]) => (
+        <section class="menu-section">
+          <h2 class="section-title">{category}</h2>
+
+          <hr />
+
+          <dl class="menu-list">
+            {dishes.map((dish) => (
+              <div class="menu-item">
+                {dish.image && (
+                  <img
+                    class="dish-image"
+                    src={urlFor(dish.image).width(800).url()}
+                    alt={dish.title}
+                  />
+                )}
+
+                <dt class="dish-header">
+                  <span class="dish-name">{dish.title}</span>
+                  <span class="dish-price">CHF {dish.price.toFixed(2)}</span>
+                </dt>
+
+                {dish.ingredients && (
+                  <dd class="dish-description">{dish.ingredients}</dd>
+                )}
+
+                {dish.allergy && (
+                  <dd class="dish-allergy">
+                    <small>⚠ {dish.allergy}</small>
+                  </dd>
+                )}
+              </div>
+            ))}
+          </dl>
+        </section>
+      ))
+    }
+  </div>
+
+  <div class="order"><Order text="Klicken, um zu bestellen!" /></div>
+
+  <style>
+    .menu-container {
+      max-width: 800px;
+      margin: 7rem auto;
+      padding: 2rem;
+      font-family: "Georgia", serif;
+    }
+
+    .menu-section {
+      margin-bottom: 5rem;
+    }
+
+    .section-title {
+      font-size: 2rem;
+      color: var(--color-piz-text-mute);
+      padding-bottom: 0.5rem;
+      text-align: center;
+      text-transform: capitalize;
+    }
+
+    hr {
+      margin: 0 auto;
+      color: var(--color-piz-accent);
+      width: 90%;
+      box-shadow: 0 0px 19px var(--color-piz-accent);
+    }
+
+    .menu-list {
+      margin: 0;
+      padding: 0;
+    }
+
+    .menu-item {
+      border-bottom: 1px dotted #ddd;
+      padding: 1rem 0;
+    }
+
+    .menu-item:last-child {
+      border-bottom: none;
+    }
+
+    .dish-image {
+      width: 100%;
+      max-height: 250px;
+      object-fit: cover;
+      border-radius: 8px;
+      margin-bottom: 0.75rem;
+    }
+
+    .dish-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      margin-bottom: 0.5rem;
+      font-weight: normal;
+    }
+
+    .dish-name {
+      font-size: 1.2rem;
+      font-weight: 600;
+      color: var(--color-piz-text-mute);
+      flex: 1;
+    }
+
+    .dish-price {
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: var(--color-piz-accent);
+      margin-left: 1rem;
+      white-space: nowrap;
+    }
+
+    .dish-description {
+      margin: 0;
+      padding-left: 0;
+      color: #555;
+      line-height: 1.5;
+      font-style: italic;
+    }
+
+    .dish-allergy {
+      margin: 0.5rem 0 0;
+      color: #888;
+      font-size: 0.85rem;
+    }
+
+    @media (max-width: 768px) {
+      .menu-container {
+        padding: 1rem;
+      }
+
+      .dish-header {
+        flex-direction: column;
+        gap: 0.25rem;
+      }
+
+      .dish-price {
+        margin-left: 0;
+      }
+
+      .section-title {
+        font-size: 1.6rem;
+      }
+    }
+
+    @media print {
+      .menu-container {
+        padding: 1rem;
+      }
+
+      .section-title {
+        page-break-after: avoid;
+      }
+
+      .menu-item {
+        page-break-inside: avoid;
+      }
+    }
+
+    .order {
+      width: 50%;
+      margin: 0 auto;
+    }
+  </style>
 </BaseLayout>

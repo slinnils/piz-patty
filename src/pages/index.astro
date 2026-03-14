@@ -32,7 +32,7 @@ import Order from "../components/Order.astro"
     <hr class="divider2" />
 
     <section class="order">
-      <Order />
+      <Order text="Bequem nach Hause liefern oder bei Uns abholen" />
     </section>
   </div>
 </BaseLayout>
@@ -54,17 +54,17 @@ import Order from "../components/Order.astro"
   @media (min-width: 800px) {
     .page-container {
       padding: 0 5rem;
-      max-width: 1400px;
+      max-width: 1800px;
       margin: 0 auto;
     }
   }
 
   hr {
-    margin: 3rem auto;
-    color: var(--color-piz-accent);
-    width: 80vw;
-    box-shadow: 0 0px 19px var(--color-piz-accent);
-  }
+  margin: 3rem auto;
+  color: var(--color-piz-accent);
+  width: 80%;
+  box-shadow: 0 0px 19px var(--color-piz-accent);
+}
 
   .divider1{
     grid-area: divider1;
@@ -145,12 +145,6 @@ import Order from "../components/Order.astro"
   }
 
   .btn-group {
-    display: flex;
-    gap: 1rem;
-    margin: 2rem auto 0 auto;
-
-    height: 50px;
-
     grid-area: btn;
   }
 

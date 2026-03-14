@@ -1,5 +1,5 @@
 ---
-
+const { text } =  Astro.props;
 ---
 
 <div class="order-section">
@@ -15,7 +15,7 @@
     </li>
   </ul>
 
-  <p class="main-text">Bequem nach Hause liefern oder bei Uns abholen</p>
+  <p class="main-text">{text}</p>
 </div>
 
 <style>
