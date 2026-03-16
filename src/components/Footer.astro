@@ -13,7 +13,7 @@
     
     <section>
       <h2>Telefon:</h2>
-      <p>+41 12 345 67 89</p>
+      <a class="tel" href="tel:+41123456789">+41 12 345 67 89</a>
     </section>
 
     <section>
@@ -28,7 +28,7 @@
     
   </div>
 
-  <p class="text-piz-text-mute">
+  <p class="copyright">
     © 2026 Piz Patty Schweiz AG. All rights reserved.
   </p>
 </div>
@@ -51,6 +51,17 @@
     margin-bottom: 2rem;
   }
 
+  a:not(.tel){
+    color: var(--color-piz-text-bright);
+    font-size: 1.2rem;
+    cursor: pointer;
+  }
+
+  a:not(.tel):hover{
+    color: var(--color-piz-text-mute);
+  }
+
+
   @media (min-width: 800px) {
     .container {
       flex-direction: row;
@@ -69,10 +80,13 @@
     gap: 1rem;
   }
 
-  a {
-    color: var(--color-piz-text-bright);
-    font-size: 1.2rem;
-    cursor: pointer;
+  .tel{
+    color: var(--color-piz-text-mute);
+  }
+
+  .copyright {
+    color: var(--color-piz-text-mute);
+    margin-bottom: 0.2rem;
   }
 
   a:hover {
