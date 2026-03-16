@@ -1,17 +1,17 @@
 ---
 import MainNavigation from "./MainNavigation.astro";
+import logo from "../assets/piz-patty-logo.png";
 ---
 
 <header class="header-container">
   <a href="/"
     ><img
       id="logo-img"
-      src="../../src/assets/piz-patty-logo.png"
+      src={logo.src}
       width="10px"
-      alt=""
+      alt="Piz Patty Logo"
     />
   </a>
-  {/*<a href="/"><h1 class="text-5xl text-piz-text-bright">Piz Patty</h1></a>*/}
   <MainNavigation />
 </header>
 
