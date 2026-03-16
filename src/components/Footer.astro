@@ -1,34 +1,85 @@
 ---
 
 ---
+
 <div class="footer-container">
-    <a href="/impressum">impressum</a>
-    <hr />
-    <p class="text-piz-text-mute">© 2026 Piz Patty Schweiz AG. All rights reserved.</p>
+  <hr />
+  <div class="container">
+    <div class="links">
+      <a href="/impressum">impressum</a>
+      <a href="/menu">Menü</a>
+      <a href="/kontakt">Kontakt</a>
+    </div>
+    
+    <section>
+      <h2>Telefon:</h2>
+      <p>+41 12 345 67 89</p>
+    </section>
+
+    <section>
+      <h2>Unsere Adresse:</h2>
+      <p>
+        Piz Patty Schweiz AG<br />
+        Beispielstrasse 12<br />
+        7000 Chur<br />
+        Schweiz
+      </p>
+    </section>
+    
+  </div>
+
+  <p class="text-piz-text-mute">
+    © 2026 Piz Patty Schweiz AG. All rights reserved.
+  </p>
 </div>
 
-
 <style>
-    .footer-container{
-        width: 100%;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        gap: 2rem;
-    }
+  .footer-container {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2rem;
+    margin: 0 1rem;
+  }
 
-    hr{
-        color: var(--color-piz-text-mute);
-        width: 100%;
-    }
+  .container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 3rem;
+    margin-bottom: 2rem;
+  }
 
-    a{
-        color: var(--color-piz-text-mute);
-        font-size: 1.2rem;
-        cursor: pointer;
+  @media (min-width: 800px) {
+    .container {
+      flex-direction: row;
+      gap: 8rem;
     }
+  }
 
-    a:hover{
-        color: var(--color-piz-text-bright);
-    }
+  hr {
+    color: var(--color-piz-text-mute);
+    width: 100%;
+  }
+
+  .links{
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  a {
+    color: var(--color-piz-text-bright);
+    font-size: 1.2rem;
+    cursor: pointer;
+  }
+
+  a:hover {
+    color: var(--color-piz-text-bright);
+  }
+
+  p {
+    color: var(--color-piz-text-mute);
+  }
 </style>
