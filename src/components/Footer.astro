@@ -1,5 +1,34 @@
 ---
 
 ---
+<div class="footer-container">
+    <a href="/impressum">impressum</a>
+    <hr />
+    <p class="text-piz-text-mute">© 2026 Piz Patty Schweiz AG. All rights reserved.</p>
+</div>
 
-<p class="text-piz-text-mute">© 2026 Piz Patty Schweiz AG. All rights reserved.</p>
+
+<style>
+    .footer-container{
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 2rem;
+    }
+
+    hr{
+        color: var(--color-piz-text-mute);
+        width: 100%;
+    }
+
+    a{
+        color: var(--color-piz-text-mute);
+        font-size: 1.2rem;
+        cursor: pointer;
+    }
+
+    a:hover{
+        color: var(--color-piz-text-bright);
+    }
+</style>

@@ -3,12 +3,14 @@ import MainNavigation from "./MainNavigation.astro";
 ---
 
 <header class="header-container">
-  <img
-    id="logo-img"
-    src="../../src/assets/piz-patty-logo.png"
-    width="10px"
-    alt=""
-  />
+  <a href="/"
+    ><img
+      id="logo-img"
+      src="../../src/assets/piz-patty-logo.png"
+      width="10px"
+      alt=""
+    />
+  </a>
   {/*<a href="/"><h1 class="text-5xl text-piz-text-bright">Piz Patty</h1></a>*/}
   <MainNavigation />
 </header>
@@ -26,6 +28,7 @@ import MainNavigation from "./MainNavigation.astro";
 </script>
 
 <style>
+
   header {
     position: fixed;
     top: 0;
@@ -65,5 +68,4 @@ import MainNavigation from "./MainNavigation.astro";
     height: 65px;
     transition: all 0.3s ease;
   }
-
 </style>

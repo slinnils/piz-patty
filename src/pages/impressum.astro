@@ -4,5 +4,114 @@ import "../styles/global.css";
 ---
 
 <BaseLayout>
-  <h1>Impressum</h1>
+  <div class="impressum-container">
+    <h1>Impressum</h1>
+
+    <section>
+      <h2>Angaben gemäss Art. 3 UWG</h2>
+      <p>
+        Piz Patty Schweiz AG<br />
+        Beispielstrasse 12<br />
+        7000 Chur<br />
+        Schweiz
+      </p>
+    </section>
+
+    <section>
+      <h2>Kontakt</h2>
+      <p>
+        Telefon: +41 12 345 67 89<br />
+        E-Mail: grischaweb@proton.me
+      </p>
+    </section>
+
+    <section>
+      <h2>Vertretungsberechtigte Person</h2>
+      <p>Marco Caduff, Geschäftsführer</p>
+    </section>
+
+    <section>
+      <h2>Handelsregistereintrag</h2>
+      <p>
+        Eingetragen im Handelsregister des Kantons Graubünden<br />
+        UID: CHE-123.456.789
+      </p>
+    </section>
+
+    <section>
+      <h2>Haftungsausschluss</h2>
+      <p>
+        Der Autor übernimmt keine Gewähr für die Richtigkeit, Genauigkeit,
+        Aktualität, Zuverlässigkeit und Vollständigkeit der Informationen.
+        Haftungsansprüche gegen den Autor wegen Schäden materieller oder
+        immaterieller Art, die aus dem Zugriff oder der Nutzung bzw.
+        Nichtnutzung der veröffentlichten Informationen entstanden sind,
+        werden ausgeschlossen.
+      </p>
+    </section>
+
+    <section>
+      <h2>Urheberrechte</h2>
+      <p>
+        Die Urheber- und alle anderen Rechte an Inhalten, Bildern, Fotos
+        oder anderen Dateien auf dieser Website gehören ausschliesslich
+        der Piz Patty Schweiz AG oder den speziell genannten Rechteinhabern.
+        Für die Reproduktion jeglicher Elemente ist die schriftliche
+        Zustimmung des Urheberrechtsträgers im Voraus einzuholen.
+      </p>
+    </section>
+
+    <section class="disclaimer">
+      <p>
+        <small>
+          Dies ist ein fiktives Portfolio-Projekt. Alle Angaben sind erfunden.<br />
+          Erstellt von <a href="https://noglit.ch">noglit.ch</a>
+        </small>
+      </p>
+    </section>
+  </div>
 </BaseLayout>
+
+<style>
+  .impressum-container {
+    max-width: 700px;
+    margin: 8rem auto 2rem;
+    padding: 2rem;
+  }
+
+  h1 {
+    font-size: clamp(1.8rem, 5vw, 2.5rem);
+    text-align: center;
+    margin-bottom: 2rem;
+  }
+
+  h2 {
+    font-size: 1.2rem;
+    color: var(--color-piz-accent);
+    margin-bottom: 0.5rem;
+  }
+
+  section {
+    margin-bottom: 2rem;
+  }
+
+  p {
+    color: var(--color-piz-text-mute);
+    line-height: 1.8;
+  }
+
+  .disclaimer {
+    margin-top: 3rem;
+    text-align: center;
+    opacity: 0.6;
+  }
+
+  .disclaimer a {
+    color: var(--color-piz-accent);
+    text-decoration: none;
+  }
+
+  .disclaimer a:hover {
+    text-decoration: underline;
+  }
+</style>
