@@ -4,5 +4,101 @@ import "../styles/global.css";
 ---
 
 <BaseLayout>
-<h1>Kontakt</h1>
+  <div class="form-container">
+    <div>
+      <h2>Hast du Fragen oder Verbesserungsvorschläge?</h2>
+      <p>Kontaktiere uns!</p>
+    </div>
+    <form action="https://api.web3forms.com/submit" method="POST">
+      <input
+        type="hidden"
+        name="access_key"
+        value={import.meta.env.PUBLIC_WEB3FORMS_KEY}
+      />
+      <label class="title" for="name">Name</label>
+      <input type="text" name="name" required />
+
+      <label class="title" for="email">E-Mail Addresse</label>
+      <input type="email" name="email" required />
+
+      <label class="title" for="message">Deine Nachricht</label>
+      <textarea name="message" required></textarea>
+      <button class="primary-btn" type="submit">Senden</button>
+
+      <input type="checkbox" name="botcheck" style="display: none;" />
+    </form>
+  </div>
 </BaseLayout>
+
+<style>
+  .form-container {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    margin: 6rem 1rem 2rem 1rem;
+    text-align: center;
+  }
+
+  h2 {
+    font-size: clamp(1.5rem, 10vw, 2rem);
+  }
+
+  p {
+    color: var(--color-piz-text-mute);
+    font-size: clamp(1rem, 10vw, 1.5rem);
+  }
+
+  form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-size: clamp(1rem, 10vw, 2rem);
+  }
+
+  .title {
+    font-family: "Sour Gummy", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 300;
+    font-style: normal;
+    color: var(--color-piz-text-mute);
+  }
+
+  input {
+    margin: 0.5rem 0 2rem 0;
+    width: 90%;
+    max-width: 700px;
+    height: 50px;
+    padding: 1.5rem;
+    font-size: 1.5rem;
+    color: var(--color-piz-text-bright);
+    background-color: var(--color-piz-card-bg);
+    border-radius: 15px;
+    border: 1px solid var(--color-piz-accent);
+    box-shadow: 0px 0px 10px #d4aa3773;
+  }
+
+  textarea {
+    width: 90%;
+    max-width: 700px;
+    height: 200px;
+    padding: 1rem;
+    margin: 0.5rem 0 2rem 0;
+    font-size: 1.5rem;
+    background-color: var(--color-piz-card-bg);
+    color: var(--color-piz-text-bright);
+    border-radius: 15px;
+    border: 1px solid var(--color-piz-accent);
+    box-shadow: 0px 0px 10px #d4aa3773;
+  }
+
+  input:not([type="hidden"]):not([name="botcheck"]):focus,
+  textarea:focus {
+    outline: none;
+    box-shadow: 0px 0px 15px #d4aa3773;
+  }
+
+  input,
+  textarea {
+    transition: box-shadow 0.3s;
+  }
+</style>

@@ -57,7 +57,6 @@ h3 {
   color: var(--color-piz-bg);
 }
 
-
 .secondary-btn {
   background-color: var(--color-piz-accent);
   border: 3px solid var(--color-piz-accent);
@@ -82,11 +81,11 @@ h3 {
 }
 
 .btn-group {
-    display: flex;
-    gap: 1rem;
-    margin: 2rem auto 0 auto;
-    height: 50px;
-  }
+  display: flex;
+  gap: 1rem;
+  margin: 2rem auto 0 auto;
+  height: 50px;
+}
 
 @media (max-width: 800px) {
   header.scrolled #nav-links {
@@ -94,10 +93,9 @@ h3 {
     gap: 1rem;
     padding-top: 0.5rem;
   }
-
 }
 
-.main-text{
-    font-size: clamp(2rem, 3vw, 3rem);
-    color: var(--color-piz-text-mute);
+.main-text {
+  font-size: clamp(2rem, 3vw, 3rem);
+  color: var(--color-piz-text-mute);
 }
