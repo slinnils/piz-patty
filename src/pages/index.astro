@@ -37,6 +37,15 @@ import Order from "../components/Order.astro"
   </div>
 </BaseLayout>
 
+<script>
+  const hero = document.querySelector(".hero-wrapper");
+  function updateParallax() {
+    hero.style.backgroundPositionY = `calc(50% + ${window.scrollY * 0.4}px)`;
+  }
+  updateParallax();
+  window.addEventListener("scroll", updateParallax);
+</script>
+
 <style>
   .page-container {
     display: grid;
@@ -80,7 +89,6 @@ import Order from "../components/Order.astro"
     left: 0;
     background-image: url("../../src/assets/hero-burger.jpg");
     background-size: cover;
-    background-position: right 0 bottom 35%;
     height: 55vh;
     width: 100%;
 

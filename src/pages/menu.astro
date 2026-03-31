@@ -85,10 +85,24 @@ const sortedEntries = Object.entries(grouped).sort(
 
   <style>
     .menu-container {
-      max-width: 800px;
+      max-width: 1900px;
       margin: 7rem auto 0 auto;
       padding: 2rem;
       font-family: "Georgia", serif;
+    }
+
+    @media (min-width: 769px) {
+      .menu-container {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 2rem 3rem;
+      }
+    }
+
+    @media (min-width: 1200px) {
+      .menu-container {
+        grid-template-columns: repeat(3, 1fr);
+      }
     }
 
     .menu-section {
