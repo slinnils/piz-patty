@@ -33,10 +33,11 @@ const grouped = items.reduce((acc, item) => {
 
 const categoryOrder = ["burger", "kebab", "beilagen", "desserts", "getraenke"];
 
-const sortedEntries = Object.entries(grouped).sort(
-  ([a], [b]) =>
-    (categoryOrder.indexOf(a) ?? 99) - (categoryOrder.indexOf(b) ?? 99),
-);
+const sortedEntries = Object.entries(grouped).sort(([a], [b]) => {
+  const indexA = categoryOrder.indexOf(a);
+  const indexB = categoryOrder.indexOf(b);
+  return (indexA === -1 ? 99 : indexA) - (indexB === -1 ? 99 : indexB);
+});
 ---
 
 <BaseLayout>
