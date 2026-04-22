@@ -31,7 +31,7 @@ const grouped = items.reduce((acc, item) => {
   return acc;
 }, {});
 
-const categoryOrder = ["Burger", "Kebab", "Beilagen", "Desserts", "Getränke"];
+const categoryOrder = ["burger", "kebab", "beilagen", "desserts", "getränke"];
 
 const sortedEntries = Object.entries(grouped).sort(
   ([a], [b]) =>
