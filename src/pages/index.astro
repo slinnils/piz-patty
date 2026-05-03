@@ -2,33 +2,37 @@
 import "../styles/global.css";
 import BaseLayout from "../layouts/BaseLayout.astro";
 import OpeningHours from "../components/OpeningHours.astro";
-import Map from "../components/Map.astro";
-import Order from "../components/Order.astro"
+import StoreVideo from "../assets/piz-patty-vid.mp4";
+import Order from "../components/Order.astro";
 ---
 
 <BaseLayout>
   <section class="hero-wrapper">
+    <video
+      autoplay
+      muted
+      loop
+      playsinline
+      poster="/images/piz-patty-laden-poster.jpg"
+      class="hero-video"
+    >
+      <source src={StoreVideo} />
+      Dein Browser unterstützt keine Videos.
+    </video>
     <div class="hero-text">
-      <h2>Piz Patty</h2>
-      <p>Dein Burger-Gipfel in Chur.</p>
+      <h1>Piz Patty</h1>
+      <h3>Dein Burger-Gipfel in Chur.</h3>
     </div>
 
     <div class="btn-group">
-      <a href="/menu" class="primary-btn">Zum Menü</a>
+      <a href="/menu" class="secondary-btn">Zum Menü</a>
       <a href="/kontakt" class="primary-btn">Kontakt/ reservation</a>
     </div>
   </section>
+
   <div class="page-container">
+    <OpeningHours />
 
-    <section class="opening-hrs">
-      <OpeningHours />
-    </section>
-
-    <hr class="divider1" />
-
-    <section class="maps">
-      <Map />
-    </section>
     <hr class="divider2" />
 
     <section class="order">
@@ -38,11 +42,15 @@ import Order from "../components/Order.astro"
 </BaseLayout>
 
 <script>
-  const hero = document.querySelector(".hero-wrapper");
+  const video = document.querySelector(".hero-video");
+  
   function updateParallax() {
-    hero.style.backgroundPositionY = `calc(50% + ${window.scrollY * 0.4}px)`;
+    if(!video) return; 
+    
+    video.style.transform = `translateY(${window.scrollY * 0.4}px)`;
   }
-  updateParallax();
+  
+  updateParallax(); 
   window.addEventListener("scroll", updateParallax);
 </script>
 
@@ -57,40 +65,28 @@ import Order from "../components/Order.astro"
       "maps"
       "divider2"
       "order";
-      padding: 0 1rem;
+    padding: 0 1rem;
   }
 
   @media (min-width: 800px) {
     .page-container {
-      padding: 0 5rem;
+      padding: 0 1rem;
       max-width: 1800px;
       margin: 0 auto;
     }
   }
 
-  hr {
-  margin: 3rem auto;
-  color: var(--color-piz-accent);
-  width: 80%;
-  box-shadow: 0 0px 19px var(--color-piz-accent);
-}
-
-  .divider1{
-    grid-area: divider1;
-  }
-  .divider2{
+  .divider2 {
     grid-area: divider2;
   }
 
-
-
   .hero-wrapper {
-    top: 0;
-    left: 0;
-    background-image: url("../../src/assets/hero-burger.jpg");
-    background-size: cover;
-    height: 55vh;
-    width: 100%;
+    position: relative;
+    height: 60vh;
+    overflow: hidden;
+
+    border-bottom: 1px solid var(--color-piz-accent);
+    box-shadow: 0px 0px 15px #d4aa3773;
 
     border-bottom: 1px solid var(--color-piz-accent);
     box-shadow: 0px 0px 15px #d4aa3773;
@@ -125,11 +121,22 @@ import Order from "../components/Order.astro"
     }
   }
 
-  @media(min-width: 1800px){
-    .hero-wrapper{
+  @media (min-width: 1800px) {
+    .hero-wrapper {
       border: 1px solid var(--color-piz-accent);
       border-radius: 0 0 20px 20px;
+      border-top: 0;
     }
+  }
+
+  .hero-video {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover; 
+    z-index: -2;
   }
 
   .hero-text {
@@ -144,11 +151,11 @@ import Order from "../components/Order.astro"
     place-self: end;
   }
 
-  .hero-wrapper h2 {
+  .hero-wrapper h1 {
     font-size: clamp(3rem, 10vw, 5rem);
   }
 
-  .hero-wrapper p {
+  .hero-wrapper h3 {
     font-size: clamp(1rem, 5vw, 3rem);
   }
 
@@ -160,14 +167,14 @@ import Order from "../components/Order.astro"
     grid-area: opening-hrs;
     display: flex;
     flex-direction: column;
-    gap: 0.5rem;
     align-items: center;
+    gap: 1.5rem;
   }
 
-  @media (min-width: 800px) {
+  @media (min-width: 930px) {
     .opening-hrs {
       flex-direction: row;
-      align-items: center;
+      align-items: start;
       justify-content: space-between;
       gap: 1rem;
     }
@@ -178,7 +185,7 @@ import Order from "../components/Order.astro"
     justify-items: center;
   }
 
-  .order{
+  .order {
     grid-area: order;
   }
 </style>

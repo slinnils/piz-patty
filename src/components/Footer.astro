@@ -10,14 +10,14 @@
       <a href="/menu">Menü</a>
       <a href="/kontakt">Kontakt</a>
     </div>
-    
+
     <section>
-      <h2>Telefon:</h2>
+      <h3>Telefon:</h3>
       <a class="tel" href="tel:+41123456789">+41 12 345 67 89</a>
     </section>
 
     <section>
-      <h2>Unsere Adresse:</h2>
+      <h3>Unsere Adresse:</h3>
       <p>
         Piz Patty Schweiz AG<br />
         Beispielstrasse 12<br />
@@ -25,12 +25,9 @@
         Schweiz
       </p>
     </section>
-    
   </div>
 
-  <p class="copyright">
-    © 2026 Piz Patty Schweiz AG. All rights reserved.
-  </p>
+  <p class="copyright">© 2026 Piz Patty Schweiz AG. All rights reserved.</p>
 </div>
 
 <style>
@@ -51,16 +48,23 @@
     margin-bottom: 2rem;
   }
 
-  a:not(.tel){
+  a:not(.tel) {
     color: var(--color-piz-text-bright);
     font-size: 1.2rem;
     cursor: pointer;
+  font-family: "Playfair Display", serif;
+  font-optical-sizing: auto;
+  font-weight: 600;
+  font-style: normal;
   }
 
-  a:not(.tel):hover{
+  a:not(.tel):hover {
     color: var(--color-piz-text-mute);
+    font-family: "Playfair Display", serif;
+    font-optical-sizing: auto;
+    font-weight: 600;
+    font-style: normal;
   }
-
 
   @media (min-width: 800px) {
     .container {
@@ -74,13 +78,13 @@
     width: 100%;
   }
 
-  .links{
+  .links {
     display: flex;
     flex-direction: column;
     gap: 1rem;
   }
 
-  .tel{
+  .tel {
     color: var(--color-piz-text-mute);
   }
 

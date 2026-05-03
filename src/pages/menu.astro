@@ -23,7 +23,6 @@ const items = await sanityClient.fetch(
   }`,
 );
 
-// Nach Kategorie gruppieren
 const grouped = items.reduce((acc, item) => {
   const cat = item.category ?? "Sonstiges";
   if (!acc[cat]) acc[cat] = [];
@@ -38,6 +37,10 @@ const sortedEntries = Object.entries(grouped).sort(([a], [b]) => {
   const indexB = categoryOrder.indexOf(b);
   return (indexA === -1 ? 99 : indexA) - (indexB === -1 ? 99 : indexB);
 });
+
+const categoryLabels = {
+  getraenke: "Getränke",
+};
 ---
 
 <BaseLayout>
@@ -45,7 +48,7 @@ const sortedEntries = Object.entries(grouped).sort(([a], [b]) => {
     {
       sortedEntries.map(([category, dishes]) => (
         <section class="menu-section">
-          <h2 class="section-title">{category}</h2>
+          <h2 class="section-title">{categoryLabels[category] || category}</h2>
 
           <hr />
 
@@ -69,11 +72,11 @@ const sortedEntries = Object.entries(grouped).sort(([a], [b]) => {
                   <dd class="dish-description">{dish.ingredients}</dd>
                 )}
 
-                {dish.allergy && (
+                
                   <dd class="dish-allergy">
-                    <small>⚠ {dish.allergy}</small>
+                    <small>{dish.allergy ? "⚠" : ""} {dish.allergy}</small>
                   </dd>
-                )}
+      
               </div>
             ))}
           </dl>
@@ -171,6 +174,7 @@ const sortedEntries = Object.entries(grouped).sort(([a], [b]) => {
     }
 
     .dish-description {
+      height: 100px;
       margin: 0;
       padding-left: 0;
       color: #555;
@@ -182,6 +186,7 @@ const sortedEntries = Object.entries(grouped).sort(([a], [b]) => {
       margin: 0.5rem 0 0;
       color: #888;
       font-size: 0.85rem;
+      height: 21px;
     }
 
     @media (max-width: 768px) {
