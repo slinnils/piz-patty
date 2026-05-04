@@ -1,16 +1,12 @@
 ---
+import { Image } from "astro:assets";
 import MainNavigation from "./MainNavigation.astro";
 import logo from "../assets/piz-patty-logo.png";
 ---
 
 <header class="header-container">
-  <a href="/"
-    ><img
-      id="logo-img"
-      src={logo.src}
-      width="10px"
-      alt="Piz Patty Logo"
-    />
+  <a href="/">
+    <Image id="logo-img" src={logo} alt="Piz Patty Logo" width={144} format="webp" />
   </a>
   <MainNavigation />
 </header>
@@ -28,7 +24,6 @@ import logo from "../assets/piz-patty-logo.png";
 </script>
 
 <style>
-
   header {
     position: fixed;
     top: 0;

@@ -1,4 +1,5 @@
 ---
+import { Image } from "astro:assets";
 import BaseLayout from "../layouts/BaseLayout.astro";
 import "../styles/global.css";
 import { sanityClient } from "sanity:client";
@@ -56,10 +57,12 @@ const categoryLabels = {
             {dishes.map((dish) => (
               <div class="menu-item">
                 {dish.image && (
-                  <img
-                    class="dish-image"
+                  <Image
                     src={urlFor(dish.image).width(800).url()}
                     alt={dish.title}
+                    width={144}
+                    height={144}
+                    class:list="dish-image"
                   />
                 )}
 
@@ -72,11 +75,11 @@ const categoryLabels = {
                   <dd class="dish-description">{dish.ingredients}</dd>
                 )}
 
-                
-                  <dd class="dish-allergy">
-                    <small>{dish.allergy ? "⚠" : ""} {dish.allergy}</small>
-                  </dd>
-      
+                <dd class="dish-allergy">
+                  <small>
+                    {dish.allergy ? "⚠" : ""} {dish.allergy}
+                  </small>
+                </dd>
               </div>
             ))}
           </dl>

@@ -1,6 +1,7 @@
 ---
 import storeFront from "../assets/piz-patty-laden.png";
 import { sanityClient } from "sanity:client";
+import { Image } from 'astro:assets';
 
 const openingHours = await sanityClient.fetch(
   '*[_type == "openingHours"][0]{montagBisDonnerstag, freitagUndSamstag, sonntag}',
@@ -36,7 +37,7 @@ const openingHours = await sanityClient.fetch(
       referrerpolicy="no-referrer-when-downgrade"
     >
     </iframe>
-    <img class="store-img" src={storeFront.src} alt="Bild vom Ladeneingang" />
+    <Image class:list="store-img" src={storeFront} alt="Bild vom Ladeneingang" format="webp"/>
   </div>
 </section>
 
