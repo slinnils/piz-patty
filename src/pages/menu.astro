@@ -45,55 +45,94 @@ const categoryLabels = {
 ---
 
 <BaseLayout>
-  <div class="menu-container">
-    {
-      sortedEntries.map(([category, dishes]) => (
-        <section class="menu-section">
-          <h2 class="section-title">{categoryLabels[category] || category}</h2>
+  <div class="page-container">
+    <div class="page-title">
+      <h3>Speisekarte</h3>
+    </div>
+    <div class="menu-container">
+      {
+        sortedEntries.map(([category, dishes]) => (
+          <section class="menu-section">
+            <h2 class="section-title">
+              {categoryLabels[category] || category}
+            </h2>
 
-          <hr />
+            <hr />
 
-          <dl class="menu-list">
-            {dishes.map((dish) => (
-              <div class="menu-item">
-                {dish.image && (
-                  <Image
-                    src={urlFor(dish.image).width(800).url()}
-                    alt={dish.title}
-                    width={144}
-                    height={144}
-                    class:list="dish-image"
-                  />
-                )}
+            <dl class="menu-list">
+              {dishes.map((dish) => (
+                <div class="menu-item">
+                  {dish.image && (
+                    <Image
+                      src={urlFor(dish.image).width(800).url()}
+                      alt={dish.title}
+                      width={144}
+                      height={144}
+                      class:list="dish-image"
+                    />
+                  )}
+                  <div class="product-text">
+                    <dt class="dish-header">
+                      <span class="dish-name">{dish.title}</span>
+                      <span class="dish-price">
+                        CHF {dish.price.toFixed(2)}
+                      </span>
+                    </dt>
 
-                <dt class="dish-header">
-                  <span class="dish-name">{dish.title}</span>
-                  <span class="dish-price">CHF {dish.price.toFixed(2)}</span>
-                </dt>
+                    {dish.ingredients && (
+                      <dd class="dish-description">{dish.ingredients}</dd>
+                    )}
 
-                {dish.ingredients && (
-                  <dd class="dish-description">{dish.ingredients}</dd>
-                )}
-
-                <dd class="dish-allergy">
-                  <small>
-                    {dish.allergy ? "⚠" : ""} {dish.allergy}
-                  </small>
-                </dd>
-              </div>
-            ))}
-          </dl>
-        </section>
-      ))
-    }
+                    <dd class="dish-allergy">
+                      <small>
+                        {dish.allergy ? "⚠" : ""} {dish.allergy}
+                      </small>
+                    </dd>
+                  </div>
+                </div>
+              ))}
+            </dl>
+          </section>
+        ))
+      }
+    </div>
   </div>
 
   <div class="order"><Order text="Klicken, um zu bestellen!" /></div>
 
   <style>
+    .page-container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin-top: 8.5rem;
+    }
+
+    .page-title {
+      font-size: clamp(1.8rem, 6vw, 3rem);
+      line-height: 2rem;
+      width: 100vw;
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      justify-content: center;
+      gap: 1.5rem;
+    }
+
+    .page-title:before,
+    .page-title:after {
+      content: "";
+      width: 20%;
+      max-width: 350px;
+      height: 10px;
+      border-top: 1px solid var(--color-piz-accent);
+      border-bottom: 1px solid var(--color-piz-accent);
+      margin-top: 0.6rem;
+    }
+
     .menu-container {
       max-width: 1900px;
-      margin: 7rem auto 0 auto;
+      margin: 2rem auto 0 auto;
       padding: 2rem;
       font-family: "Georgia", serif;
     }
@@ -149,8 +188,14 @@ const categoryLabels = {
       width: 100%;
       max-height: 250px;
       object-fit: cover;
-      border-radius: 8px;
-      margin-bottom: 0.75rem;
+      border-radius: 8px 8px 0 0;
+    }
+
+    .product-text {
+      border: 1px solid var(--color-piz-accent);
+      border-top: 0;
+      border-radius: 0 0 8px 8px;
+      padding: 1rem;
     }
 
     .dish-header {

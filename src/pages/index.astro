@@ -13,6 +13,7 @@ import Order from "../components/Order.astro";
       muted
       loop
       playsinline
+      preload="metadata"
       poster="/images/piz-patty-laden-poster.jpg"
       class="hero-video"
     >
@@ -43,14 +44,14 @@ import Order from "../components/Order.astro";
 
 <script>
   const video = document.querySelector(".hero-video");
-  
+
   function updateParallax() {
-    if(!video) return; 
-    
+    if (!video) return;
+
     video.style.transform = `translateY(${window.scrollY * 0.4}px)`;
   }
-  
-  updateParallax(); 
+
+  updateParallax();
   window.addEventListener("scroll", updateParallax);
 </script>
 
@@ -135,7 +136,7 @@ import Order from "../components/Order.astro";
     left: 0;
     width: 100%;
     height: 100%;
-    object-fit: cover; 
+    object-fit: cover;
     z-index: -2;
   }
 
