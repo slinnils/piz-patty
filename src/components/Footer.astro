@@ -25,6 +25,68 @@
         Schweiz
       </p>
     </section>
+
+    <section>
+      <h4>Social Media:</h4>
+      <div class="sm-group">
+        <a href="https://www.instagram.com/">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            xmlns:xlink="http://www.w3.org/1999/xlink"
+            fill="#d4a937"
+            width="40px"
+            height="40px"
+            viewBox="0 0 30 30"
+            id="Camada_1"
+            version="1.1"
+            xml:space="preserve"
+          >
+            <g>
+              <path
+                d="M22.3,8.4c-0.8,0-1.4,0.6-1.4,1.4c0,0.8,0.6,1.4,1.4,1.4c0.8,0,1.4-0.6,1.4-1.4C23.7,9,23.1,8.4,22.3,8.4z"
+              ></path>
+
+              <path
+                d="M16,10.2c-3.3,0-5.9,2.7-5.9,5.9s2.7,5.9,5.9,5.9s5.9-2.7,5.9-5.9S19.3,10.2,16,10.2z M16,19.9c-2.1,0-3.8-1.7-3.8-3.8   c0-2.1,1.7-3.8,3.8-3.8c2.1,0,3.8,1.7,3.8,3.8C19.8,18.2,18.1,19.9,16,19.9z"
+              ></path>
+
+              <path
+                d="M20.8,4h-9.5C7.2,4,4,7.2,4,11.2v9.5c0,4,3.2,7.2,7.2,7.2h9.5c4,0,7.2-3.2,7.2-7.2v-9.5C28,7.2,24.8,4,20.8,4z M25.7,20.8   c0,2.7-2.2,5-5,5h-9.5c-2.7,0-5-2.2-5-5v-9.5c0-2.7,2.2-5,5-5h9.5c2.7,0,5,2.2,5,5V20.8z"
+              ></path>
+            </g>
+          </svg>
+        </a>
+        <a href="https://www.facebook.com/">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="35px"
+            height="35px"
+            viewBox="0 0 24 24"
+            fill="none"
+          >
+            <path
+              fill-rule="evenodd"
+              clip-rule="evenodd"
+              d="M20 1C21.6569 1 23 2.34315 23 4V20C23 21.6569 21.6569 23 20 23H4C2.34315 23 1 21.6569 1 20V4C1 2.34315 2.34315 1 4 1H20ZM20 3C20.5523 3 21 3.44772 21 4V20C21 20.5523 20.5523 21 20 21H15V13.9999H17.0762C17.5066 13.9999 17.8887 13.7245 18.0249 13.3161L18.4679 11.9871C18.6298 11.5014 18.2683 10.9999 17.7564 10.9999H15V8.99992C15 8.49992 15.5 7.99992 16 7.99992H18C18.5523 7.99992 19 7.5522 19 6.99992V6.31393C19 5.99091 18.7937 5.7013 18.4813 5.61887C17.1705 5.27295 16 5.27295 16 5.27295C13.5 5.27295 12 6.99992 12 8.49992V10.9999H10C9.44772 10.9999 9 11.4476 9 11.9999V12.9999C9 13.5522 9.44771 13.9999 10 13.9999H12V21H4C3.44772 21 3 20.5523 3 20V4C3 3.44772 3.44772 3 4 3H20Z"
+              fill="#d4a937"></path>
+          </svg>
+        </a>
+        <a href="https://www.tiktok.com/">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="40px"
+            height="40px"
+            viewBox="0 0 24 24"
+            fill="#d4a937"
+            ><path
+              d="M20 7.50414C18.5333 7.56942 15.52 6.75998 15.2 3H12.4V13.9666C12.4 17.0999 9.93253 18.4412 8.289 17.2507C6.20169 15.7389 7.60003 12.5958 10.2 12.9874V9.6583C8.20003 9.6583 4 10.4416 4 15.3374C4 21.6041 10.8146 21.4083 12.4 20.5824C14.9798 19.2385 15.6 17.7827 15.6 14.5541C15.6 11.6166 15.6 9.85413 15.6 9.0708C16.2667 9.39719 18.08 10.0891 20 10.2458"
+              stroke="#d4a937"
+              stroke-linecap="round"
+              stroke-linejoin="round"></path></svg
+          >
+        </a>
+      </div>
+    </section>
   </div>
 
   <p class="copyright">© 2026 Piz Patty Schweiz AG. All rights reserved.</p>
@@ -46,16 +108,17 @@
     justify-content: center;
     gap: 3rem;
     margin-bottom: 2rem;
+    width: 80%;
   }
 
   a:not(.tel) {
     color: var(--color-piz-text-bright);
     font-size: 1.2rem;
     cursor: pointer;
-  font-family: "Playfair Display", serif;
-  font-optical-sizing: auto;
-  font-weight: 600;
-  font-style: normal;
+    font-family: "Playfair Display", serif;
+    font-optical-sizing: auto;
+    font-weight: 600;
+    font-style: normal;
   }
 
   a:not(.tel):hover {
@@ -69,7 +132,7 @@
   @media (min-width: 800px) {
     .container {
       flex-direction: row;
-      gap: 8rem;
+      justify-content: space-between;
     }
   }
 
@@ -99,5 +162,13 @@
 
   p {
     color: var(--color-piz-text-mute);
+  }
+
+  .sm-group {
+    margin-top: 0.3rem;
+
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
   }
 </style>

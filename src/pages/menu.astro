@@ -222,12 +222,17 @@ const categoryLabels = {
     }
 
     .dish-description {
-      height: 110px;
       margin: 0;
       padding-left: 0;
       color: #555;
       line-height: 1.5;
       font-style: italic;
+    }
+
+    @media(min-width: 769px){
+      .dish-description{
+        height: 150px;
+      }
     }
 
     .dish-allergy {
