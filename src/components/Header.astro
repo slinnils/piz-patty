@@ -32,6 +32,16 @@ import logo from "../assets/piz-patty-logo.png";
     z-index: 10;
     padding: 1rem 0 0 1rem;
     transition: all 0.3s ease;
+    display: flex;
+    gap: 1rem;
+  }
+
+  @media(min-width: 1800px){
+    header{
+    max-width: 1800px;
+    left: auto;
+    right: auto;
+    }
   }
 
   #logo-img {
@@ -45,11 +55,6 @@ import logo from "../assets/piz-patty-logo.png";
     font-size: clamp(2rem, 6vw, 3rem);
     color: var(--color-piz-accent);
     text-shadow: 0 2px 8px var(--color-piz-card-bg);
-  }
-
-  .header-container {
-    display: flex;
-    gap: 1rem;
   }
 
   header.scrolled {

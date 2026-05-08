@@ -18,7 +18,7 @@ import Header from "../components/Header.astro";
       rel="stylesheet"
     />
   </head>
-  <body class="bg-piz-bg">
+  <body>
     <div id="header">
       <Header />
     </div>
@@ -26,15 +26,16 @@ import Header from "../components/Header.astro";
     <main id="main">
       <slot />
     </main>
-  </body>
 
-  <footer id="footer">
-    <Footer />
-  </footer>
+    <footer id="footer">
+      <Footer />
+    </footer>
+  </body>
 </html>
 
 <style>
   body {
+    background-color: var(--color-piz-bg);
     display: grid;
     grid-template-rows: auto auto auto;
     grid-template-columns: 1fr;
