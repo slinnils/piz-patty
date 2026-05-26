@@ -57,7 +57,7 @@ const categoryLabels = {
               {categoryLabels[category] || category}
             </h2>
 
-            <hr />
+            <hr class="category-line" />
 
             <dl class="menu-list">
               {dishes.map((dish) => (
@@ -90,6 +90,7 @@ const categoryLabels = {
                     </dd>
                   </div>
                 </div>
+                <hr class="card-seperator"/>
               ))}
             </dl>
           </section>
@@ -164,7 +165,7 @@ const categoryLabels = {
       text-transform: capitalize;
     }
 
-    hr {
+    .category-line {
       margin: 0 auto;
       color: var(--color-piz-accent);
       width: 90%;
@@ -177,8 +178,16 @@ const categoryLabels = {
     }
 
     .menu-item {
+      margin: 1rem 0;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.158);
+    }
+
+    .card-seperator{
       border-bottom: 1px dotted #ddd;
-      padding: 1rem 0;
+    color: transparent;
+    box-shadow: 0 0 0 transparent;
+    margin: 0;
+    width: 100%;
     }
 
     .menu-item:last-child {

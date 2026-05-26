@@ -18,7 +18,7 @@ import "../styles/global.css";
       <label class="title" for="name">Name</label>
       <input type="text" name="name" required />
 
-      <label class="title" for="email">E-Mail-Adresse</label>
+      <label class="title" for="email">E-Mail</label>
       <input type="email" name="email" required />
 
       <label class="title" for="message">Ihre Nachricht</label>
@@ -33,7 +33,7 @@ import "../styles/global.css";
   </div>
 
   <div class="info">
-    <p class="section-title">Meine Kontaktangaben:</p>
+    <p class="section-title">Unsere Kontaktangaben:</p>
     <p>Hans Muster</p>
     <a href="mailto:nils@grischa-web.ch">nils@grischa-web.ch</a>
     <a href="tel:+41799689805">+41 12 345 67 89</a>
@@ -81,12 +81,16 @@ import "../styles/global.css";
     max-width: 536px;
     margin: 0 auto;
     padding: 2rem;
+    background-color: var(--color-piz-card-bg);
+    border-radius: 5px;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.158);
   }
 
   label {
     color: var(--color-piz-text-bright);
-    font-size: clamp(1.5rem, 4vw, 1.8rem);
+    font-size: clamp(0.8rem, 4vw, 1rem);
     align-self: flex-start;
+    text-transform: uppercase;
   }
 
   form {
@@ -107,15 +111,32 @@ import "../styles/global.css";
 
   input,
   textarea {
-    margin: 0.5rem 0 1.6rem 0;
-    padding: 0.2rem 1rem;
+    margin-bottom: 1.6rem;
     width: 100%;
     max-width: 600px;
-    font-size: 1.5rem;
+    font-size: 1rem;
     color: var(--color-piz-text-bright);
-    background-color: var(--color-piz-card-bg);
+  }
+
+  input{
+    border-bottom: 1px solid var(--color-piz-text-mute);
+    padding: 0.8rem 0 0.3rem 0.5rem;
+  }
+
+  input:focus{
+    border-bottom: 1px solid var(--color-piz-accent);
+  }
+
+  textarea{
+    border: 1px solid var(--color-piz-text-mute);
     border-radius: 15px;
+    padding: 0.5rem 1rem;
+    margin-top: 0.8rem;
+  }
+
+  textarea:focus{
     border: 1px solid var(--color-piz-accent);
+    box-shadow: 0px 0px 20px var(--color-piz-accent);
   }
 
   input:not([type="hidden"]):not([name="botcheck"]):focus,
@@ -136,12 +157,15 @@ import "../styles/global.css";
   }
 
   .info{
-    width: 100%;
+    width: 60%;
     text-align: center;
     font-size: clamp(1rem, 2.5vw, 1.5rem);
-    margin-top: 2rem;
+    padding: 2rem;
 
     color: var(--color-piz-text-bright);
+    background-color: var(--color-piz-card-bg);
+    border-radius: 5px;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.158);
 
     display: flex;
     flex-direction: column;
