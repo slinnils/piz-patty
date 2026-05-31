@@ -25,7 +25,9 @@ h2 {
   color: var(--color-piz-text-bright);
 }
 
-h3, h4, h5 {
+h3,
+h4,
+h5 {
   font-family: "Playfair Display", serif;
   font-optical-sizing: auto;
   font-weight: 400;
@@ -88,11 +90,11 @@ h3, h4, h5 {
 }
 
 hr {
-    margin: 3rem auto;
-    color: var(--color-piz-accent);
-    width: 80%;
-    box-shadow: 0 0px 19px var(--color-piz-accent);
-  }
+  margin: 3rem auto;
+  color: var(--color-piz-accent);
+  width: 80%;
+  box-shadow: 0 0px 19px var(--color-piz-accent);
+}
 
 @media (max-width: 800px) {
   header.scrolled #nav-links {
@@ -105,4 +107,12 @@ hr {
 .main-text {
   font-size: clamp(2rem, 3vw, 3rem);
   color: var(--color-piz-text-mute);
+}
+
+.category-grid {
+  color: var(--color-piz-text-bright);
+  margin: 3rem 0;
+  display: grid;
+  grid-template-columns: repeat(4, auto);
+  gap: 2rem;
 }

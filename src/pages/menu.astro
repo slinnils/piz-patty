@@ -1,4 +1,5 @@
 ---
+import MenuPage from "./menu.jsx"
 import { Image } from "astro:assets";
 import BaseLayout from "../layouts/BaseLayout.astro";
 import "../styles/global.css";
@@ -12,36 +13,35 @@ function urlFor(source) {
   return builder.image(source);
 }
 
+// Kategorien mit Bildern holen
+const categories = await sanityClient.fetch(
+  `*[_type == "category"] | order(title asc) { _id, title, order, image }`
+);
+
+// Menu Items mit expandierter Kategorie-Referenz holen
 const items = await sanityClient.fetch(
-  `*[_type == "menu"] | order(category asc, title asc) {
+  `*[_type == "menu"] | order(title asc) {
     _id,
     title,
     price,
     ingredients,
     allergy,
-    category,
-    image
-  }`,
+    category-> { _id, title, slug, image }
+  }`
 );
 
+// Nach Kategorie-Slug gruppieren
 const grouped = items.reduce((acc, item) => {
-  const cat = item.category ?? "Sonstiges";
+  const cat = item.category?.slug ?? "sonstiges";
   if (!acc[cat]) acc[cat] = [];
   acc[cat].push(item);
   return acc;
 }, {});
 
-const categoryOrder = ["burger", "kebab", "beilagen", "desserts", "getraenke"];
-
-const sortedEntries = Object.entries(grouped).sort(([a], [b]) => {
-  const indexA = categoryOrder.indexOf(a);
-  const indexB = categoryOrder.indexOf(b);
-  return (indexA === -1 ? 99 : indexA) - (indexB === -1 ? 99 : indexB);
-});
-
-const categoryLabels = {
-  getraenke: "Getränke",
-};
+const categoriesWithImages = categories.map(cat => ({
+  ...cat,
+  imageUrl: urlFor(cat.image).url()
+}));
 ---
 
 <BaseLayout>
@@ -49,7 +49,11 @@ const categoryLabels = {
     <div class="page-title">
       <h3>Speisekarte</h3>
     </div>
-    <div class="menu-container">
+
+    <MenuPage items={items} categories={categoriesWithImages} client:load />
+
+    {/*OLD MENU CARD:*/}
+    {/* <div class="menu-container">
       {
         sortedEntries.map(([category, dishes]) => (
           <section class="menu-section">
@@ -96,7 +100,8 @@ const categoryLabels = {
           </section>
         ))
       }
-    </div>
+    </div>*/}
+    {/*OLD MENU CARD:*/}
   </div>
 
   <div class="order"><Order text="Klicken, um zu bestellen!" /></div>

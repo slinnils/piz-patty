@@ -1,8 +1,9 @@
-
 import { defineConfig } from "astro/config";
 import tailwindcss from "@tailwindcss/vite";
 
 import sanity from "@sanity/astro";
+
+import react from "@astrojs/react";
 
 // https://astro.build/config
 export default defineConfig({
@@ -14,11 +15,9 @@ export default defineConfig({
     enabled: false,
   },
 
-  integrations: [
-    sanity({
-      projectId: "8s3mk80d",
-      dataset: "production",
-      useCdn: false,
-    }),
-  ],
+  integrations: [sanity({
+    projectId: "8s3mk80d",
+    dataset: "production",
+    useCdn: false,
+  }), react()],
 });
