@@ -1,7 +1,7 @@
 export default function CategoryList({ categories, onSelectCategory }) {
   return (
     <>
-      <p className="mt-6 text-2xl text-piz-accent">
+      <p className="mt-6 text-2xl text-[clamp(1rem,4vw,1.4rem)] text-piz-accent">
         Worauf hast du heute lust?
       </p>
       <div className="category-grid">
