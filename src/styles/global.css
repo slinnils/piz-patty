@@ -181,7 +181,7 @@ hr {
 }
 
 .main-text {
-  font-size: clamp(2rem, 3vw, 3rem);
+  font-size: clamp(1rem, 3vw, 1.8rem);
   color: var(--color-piz-text-mute);
 }
 

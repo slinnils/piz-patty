@@ -74,7 +74,7 @@ export default function MenuCard({
               {meal.ingredients}
             </p>
             {meal.allergy && (
-              <p className="text-piz-accent text-xs mt-2">⚠ {meal.allergy}</p>
+              <p className="text-piz-accent-transparent text-xs mt-2">⚠ {meal.allergy}</p>
             )}
           </div>
         ))}

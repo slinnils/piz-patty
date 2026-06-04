@@ -3,33 +3,55 @@ const { text } = Astro.props;
 ---
 
 <div class="order-section">
-  <ul class="link-group">
-    <li class="eat-link">
-      <a
-        href="https://www.just-eat.ch/en?utm_source=google&utm_medium=cpc&utm_campaign=CM_S_G_CHE_DE_%5BBRAND%5D_%5BENGM%5D_Just+Eat_Root_National&utm_campaignid=13121569419&gad_source=1&gad_campaignid=13121569419&gbraid=0AAAAAD3ULIVXj67RBVhAJPpEWMOUzZqRz&gclid=CjwKCAjw1N7NBhAoEiwAcPchp9rB-CM_LwQk6Ac0RzGBKQWL6tFtp22kTxjRDNYyhxpejsuAH_QirhoCheEQAvD_BwE"
-      ></a>
-    </li>
-
-    <li class="uber-link">
-      <a
-        href="https://www.ubereats.com/ch?utm_source=AdWords_Brand&utm_campaign=CM2224891-search-google-brand_168_-99_CH-National_e_web_acq_cpc_de-DE_T1_Generic_BM_uber%20eat_kwd-126053031649_797422294064_194181082078_e_c&campaign_id=19124015190&adg_id=194181082078&fi_id=&match=e&net=g&dev=c&dev_m=&ad_id=797422294064&cre=797422294064&kwid=kwd-126053031649&kw=uber%20eat&placement=&tar=&gclsrc=aw.ds&gad_source=1&gad_campaignid=19124015190&gbraid=0AAAAADi-0Ch6-gBtC3l0Y799HrXVtPq0S&gclid=CjwKCAjw1N7NBhAoEiwAcPchp4za0HD5I6zKk5GSYLPNftxCQxNFIEfxt8tN8wbwKZI8DV9ufWGwWBoCArcQAvD_BwE"
-      ></a>
-    </li>
-  </ul>
-
   <p class="main-text">{text}</p>
+  <div>
+    <div class="contact-info">
+      <p>Telefon:</p>
+      <a class="tel" href="tel:+41123456789">+41 12 345 67 89</a>
+    </div>
+
+    <ul class="link-group">
+      <li class="eat-link">
+        <a
+          href="https://www.just-eat.ch/en?utm_source=google&utm_medium=cpc&utm_campaign=CM_S_G_CHE_DE_%5BBRAND%5D_%5BENGM%5D_Just+Eat_Root_National&utm_campaignid=13121569419&gad_source=1&gad_campaignid=13121569419&gbraid=0AAAAAD3ULIVXj67RBVhAJPpEWMOUzZqRz&gclid=CjwKCAjw1N7NBhAoEiwAcPchp9rB-CM_LwQk6Ac0RzGBKQWL6tFtp22kTxjRDNYyhxpejsuAH_QirhoCheEQAvD_BwE"
+        ></a>
+      </li>
+
+      <li class="uber-link">
+        <a
+          href="https://www.ubereats.com/ch?utm_source=AdWords_Brand&utm_campaign=CM2224891-search-google-brand_168_-99_CH-National_e_web_acq_cpc_de-DE_T1_Generic_BM_uber%20eat_kwd-126053031649_797422294064_194181082078_e_c&campaign_id=19124015190&adg_id=194181082078&fi_id=&match=e&net=g&dev=c&dev_m=&ad_id=797422294064&cre=797422294064&kwid=kwd-126053031649&kw=uber%20eat&placement=&tar=&gclsrc=aw.ds&gad_source=1&gad_campaignid=19124015190&gbraid=0AAAAADi-0Ch6-gBtC3l0Y799HrXVtPq0S&gclid=CjwKCAjw1N7NBhAoEiwAcPchp4za0HD5I6zKk5GSYLPNftxCQxNFIEfxt8tN8wbwKZI8DV9ufWGwWBoCArcQAvD_BwE"
+        ></a>
+      </li>
+    </ul>
+  </div>
 </div>
 
 <style>
-  p {
+
+  .main-text{
+    color: var(--color-piz-accent);
+    font-size: clamp(1.3rem, 4vw, 1.8rem);
     text-align: center;
-    padding-bottom: 2rem;
+  }
+
+  .contact-info {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    color: var(--color-piz-text-bright);
+    font-size: clamp(1rem, 3vw, 1.4rem);
+    margin-bottom: 2rem;
+  }
+
+  .order-section a{
+    color: var(--color-piz-accent);
   }
 
   .order-section {
     display: flex;
     flex-direction: column;
     align-items: center;
+    justify-content: center;
     gap: 0.5rem;
     margin-bottom: 3rem;
   }
@@ -39,12 +61,6 @@ const { text } = Astro.props;
     gap: 1rem;
     justify-content: center;
     width: 100%;
-  }
-
-  @media (min-width: 800px) {
-    .order-section {
-      flex-direction: row;
-    }
   }
 
   .eat-link {
@@ -67,12 +83,12 @@ const { text } = Astro.props;
 
   @media (min-width: 800px) {
     .uber-link {
-      height: 150px;
-      width: 150px;
+      height: 100px;
+      width: 100px;
     }
     .eat-link {
-      height: 150px;
-      width: 150px;
+      height: 100px;
+      width: 100px;
     }
   }
 
