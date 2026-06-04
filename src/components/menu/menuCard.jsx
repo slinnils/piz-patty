@@ -70,6 +70,6 @@ export default function MenuCard({
           </div>
         ))}
       </div>
-    </div>
+    </div> 
   );
 }
