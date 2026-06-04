@@ -15,8 +15,8 @@ export default function MenuCard({
   }
 
   return (
-    <div className="my-12 flex flex-col items-center gap-5 mx-5 w-[80vw] max-w-350">
-      <div className="flex flex-col lg:flex-row w-full max-w-350 bg-piz-card-bg shadow-lg py-5 px-5 sm:px-10 rounded-2xl gap-4">
+    <div className="my-12 flex flex-col items-center gap-5 mx-5 lg:w-[65vw] w-[95vw] max-w-350">
+      <div className="flex flex-col lg:flex-row lg:justify-center w-full max-w-350 bg-piz-card-bg shadow-lg py-5 px-5 sm:px-10 rounded-2xl gap-4">
         <button
           onClick={backToSelection}
           className="sm-secondary-btn grid-btn lg:self-center self-start"
@@ -67,14 +67,18 @@ export default function MenuCard({
             <div className="flex w-full justify-between">
               <p className="text-2xl text-piz-text-bright">{meal.title}</p>
               <span className="flex-1 mb-2 mx-2 border-b border-dotted border-piz-text-mute"></span>{" "}
-              <p className="text-piz-accent self-end">{priceConverter(meal.price)}</p>
+              <p className="text-piz-accent self-end">
+                {priceConverter(meal.price)}
+              </p>
             </div>
 
             <p className="text-piz-text-mute wrap-break-word">
               {meal.ingredients}
             </p>
             {meal.allergy && (
-              <p className="text-piz-accent-transparent text-xs mt-2">⚠ {meal.allergy}</p>
+              <p className="text-piz-accent-transparent text-xs mt-2">
+                ⚠ {meal.allergy}
+              </p>
             )}
           </div>
         ))}
