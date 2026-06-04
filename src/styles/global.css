@@ -113,6 +113,20 @@ hr {
   color: var(--color-piz-accent);
   width: 80%;
   box-shadow: 0 0px 19px var(--color-piz-accent);
+  -webkit-mask-image: linear-gradient(
+    to right,
+    transparent,
+    black 40%,
+    black 50%,
+    transparent
+  );
+  mask-image: linear-gradient(
+    to right,
+    transparent,
+    black 40%,
+    black 50%,
+    transparent
+  );
 }
 
 /*MENU CARD NAVIGATIONBAR*/
@@ -127,7 +141,6 @@ hr {
   justify-content: center;
   gap: 1.5rem;
 }
-
 
 .page-title:before,
 .page-title:after {
@@ -178,11 +191,6 @@ hr {
     gap: 1rem;
     padding-top: 0.5rem;
   }
-}
-
-.main-text {
-  font-size: clamp(1rem, 3vw, 1.8rem);
-  color: var(--color-piz-text-mute);
 }
 
 .category-grid {
