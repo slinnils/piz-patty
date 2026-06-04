@@ -6,8 +6,9 @@ import { useState } from "react";
 export default function MenuPage({ items, categories }) {
   const [selectedCategory, setSelectedCategory] = useState(null);
 
-  function categorySelector(selectedCategory) {
-    setSelectedCategory(selectedCategory);
+  function categorySelector(category) {
+    setSelectedCategory(category);
+  window.scrollTo({ top: 0, behavior: "smooth" });
   }
 
   function backToSelection(){
@@ -28,7 +29,9 @@ export default function MenuPage({ items, categories }) {
             <MenuCard
               backToSelection={backToSelection}
               item={items.filter((item) => item.category.title === selectedCategory)}
-              categories={categories.filter(category => category.title === selectedCategory)}
+              categories={categories}
+              onSelectCategory={categorySelector}
+              selectedCategory={categories.find(cat => cat.title === selectedCategory)}
             />
           )}
         </div>

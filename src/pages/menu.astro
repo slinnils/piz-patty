@@ -1,6 +1,5 @@
 ---
 import MenuPage from "./menu/categorySelector.jsx"
-import { Image } from "astro:assets";
 import BaseLayout from "../layouts/BaseLayout.astro";
 import "../styles/global.css";
 import { sanityClient } from "sanity:client";
@@ -13,12 +12,10 @@ function urlFor(source) {
   return builder.image(source);
 }
 
-// Kategorien mit Bildern holen
 const categories = await sanityClient.fetch(
   `*[_type == "category"] | order(title asc) { _id, title, order, image }`
 );
 
-// Menu Items mit expandierter Kategorie-Referenz holen
 const items = await sanityClient.fetch(
   `*[_type == "menu"] | order(title asc) {
     _id,
@@ -30,17 +27,9 @@ const items = await sanityClient.fetch(
   }`
 );
 
-// Nach Kategorie-Slug gruppieren
-const grouped = items.reduce((acc, item) => {
-  const cat = item.category?.slug ?? "sonstiges";
-  if (!acc[cat]) acc[cat] = [];
-  acc[cat].push(item);
-  return acc;
-}, {});
-
 const categoriesWithImages = categories.map(cat => ({
   ...cat,
-  imageUrl: urlFor(cat.image).url()
+  imageUrl: urlFor(cat.image).width(400).format('webp').quality(80).url()
 }));
 ---
 
@@ -52,56 +41,6 @@ const categoriesWithImages = categories.map(cat => ({
 
     <MenuPage items={items} categories={categoriesWithImages} client:load />
 
-    {/*OLD MENU CARD:*/}
-    {/* <div class="menu-container">
-      {
-        sortedEntries.map(([category, dishes]) => (
-          <section class="menu-section">
-            <h2 class="section-title">
-              {categoryLabels[category] || category}
-            </h2>
-
-            <hr class="category-line" />
-
-            <dl class="menu-list">
-              {dishes.map((dish) => (
-                <div class="menu-item">
-                  {dish.image && (
-                    <Image
-                      src={urlFor(dish.image).width(800).url()}
-                      alt={dish.title}
-                      width={144}
-                      height={144}
-                      class:list="dish-image"
-                    />
-                  )}
-                  <div class="product-text">
-                    <dt class="dish-header">
-                      <span class="dish-name">{dish.title}</span>
-                      <span class="dish-price">
-                        CHF {dish.price.toFixed(2)}
-                      </span>
-                    </dt>
-
-                    {dish.ingredients && (
-                      <dd class="dish-description">{dish.ingredients}</dd>
-                    )}
-
-                    <dd class="dish-allergy">
-                      <small>
-                        {dish.allergy ? "⚠" : ""} {dish.allergy}
-                      </small>
-                    </dd>
-                  </div>
-                </div>
-                <hr class="card-seperator"/>
-              ))}
-            </dl>
-          </section>
-        ))
-      }
-    </div>*/}
-    {/*OLD MENU CARD:*/}
   </div>
 
   <div class="order"><Order text="Klicken, um zu bestellen!" /></div>
@@ -168,126 +107,6 @@ const categoriesWithImages = categories.map(cat => ({
       padding-bottom: 0.5rem;
       text-align: center;
       text-transform: capitalize;
-    }
-
-    .category-line {
-      margin: 0 auto;
-      color: var(--color-piz-accent);
-      width: 90%;
-      box-shadow: 0 0px 19px var(--color-piz-accent);
-    }
-
-    .menu-list {
-      margin: 0;
-      padding: 0;
-    }
-
-    .menu-item {
-      margin: 1rem 0;
-    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.158);
-    }
-
-    .card-seperator{
-      border-bottom: 1px dotted #ddd;
-    color: transparent;
-    box-shadow: 0 0 0 transparent;
-    margin: 0;
-    width: 100%;
-    }
-
-    .menu-item:last-child {
-      border-bottom: none;
-    }
-
-    .dish-image {
-      width: 100%;
-      max-height: 250px;
-      object-fit: cover;
-      border-radius: 8px 8px 0 0;
-    }
-
-    .product-text {
-      border: 1px solid var(--color-piz-accent);
-      border-top: 0;
-      border-radius: 0 0 8px 8px;
-      padding: 1rem;
-    }
-
-    .dish-header {
-      display: flex;
-      justify-content: space-between;
-      align-items: flex-start;
-      margin-bottom: 0.5rem;
-      font-weight: normal;
-    }
-
-    .dish-name {
-      font-size: 1.2rem;
-      font-weight: 600;
-      color: var(--color-piz-text-mute);
-      flex: 1;
-    }
-
-    .dish-price {
-      font-size: 1.1rem;
-      font-weight: 700;
-      color: var(--color-piz-accent);
-      margin-left: 1rem;
-      white-space: nowrap;
-    }
-
-    .dish-description {
-      margin: 0;
-      padding-left: 0;
-      color: #555;
-      line-height: 1.5;
-      font-style: italic;
-    }
-
-    @media(min-width: 769px){
-      .dish-description{
-        height: 150px;
-      }
-    }
-
-    .dish-allergy {
-      margin: 0.5rem 0 0;
-      color: #888;
-      font-size: 0.85rem;
-      height: 21px;
-    }
-
-    @media (max-width: 768px) {
-      .menu-container {
-        padding: 1rem;
-      }
-
-      .dish-header {
-        flex-direction: column;
-        gap: 0.25rem;
-      }
-
-      .dish-price {
-        margin-left: 0;
-      }
-
-      .section-title {
-        font-size: 1.6rem;
-      }
-    }
-
-    @media print {
-      .menu-container {
-        padding: 1rem;
-      }
-
-      .section-title {
-        page-break-after: avoid;
-      }
-
-      .menu-item {
-        page-break-inside: avoid;
-      }
     }
 
     .order {

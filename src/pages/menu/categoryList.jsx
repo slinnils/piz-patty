@@ -1,4 +1,4 @@
-export default function CategoryList({ categories, items, onSelectCategory }) {
+export default function CategoryList({ categories, onSelectCategory }) {
   return (
     <>
       <h2 className="mt-6 text-2xl">Worauf hast du heute lust?</h2>
@@ -13,6 +13,7 @@ export default function CategoryList({ categories, items, onSelectCategory }) {
               <img
                 src={category.imageUrl}
                 alt={category.title}
+                loading="lazy"
                 className="row-[1/2] col-[1/2] h-80 w-80 object-cover"
               />
               <div className="bg-stone-950/50 py-6 row-[1/2] col-[1/2]">
