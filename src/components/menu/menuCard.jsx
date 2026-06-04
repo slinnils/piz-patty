@@ -7,7 +7,7 @@ export default function MenuCard({
 }) {
   return (
     <div className="my-12 flex flex-col items-center gap-5 mx-5 w-[80vw] max-w-350">
-      <div className="flex flex-col lg:flex-row w-full max-w-350 bg-piz-card-bg py-5 px-5 sm:px-10 rounded-2xl gap-4">
+      <div className="flex flex-col lg:flex-row w-full max-w-350 bg-piz-card-bg shadow-lg py-5 px-5 sm:px-10 rounded-2xl gap-4">
         <button
           onClick={backToSelection}
           className="sm-secondary-btn grid-btn lg:self-center self-start"
@@ -46,13 +46,13 @@ export default function MenuCard({
         <h3 className="text-3xl">{selectedCategory.title}</h3>
         <img
           src={selectedCategory.imageUrl}
-          className="w-50 h-50 lg:w-100 lg:h-100  object-cover rounded-4xl"
+          className="w-50 h-50 lg:w-100 lg:h-100 shadow-lg object-cover rounded-4xl"
           alt={selectedCategory.title}
           loading="lazy"
         />
       </div>
 
-      <div className="bg-piz-card-bg md:px-10 px-5 py-3 rounded-2xl w-full">
+      <div className="bg-piz-card-bg shadow-lg md:px-10 px-5 py-3 rounded-2xl w-full">
         {item.map((meal) => (
           <div key={meal._id} className="flex flex-col my-5">
             <div className="flex w-full justify-between">
