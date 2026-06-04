@@ -8,15 +8,19 @@ export default function MenuPage({ items, categories }) {
 
   function categorySelector(category) {
     setSelectedCategory(category);
-  window.scrollTo({ top: 0, behavior: "smooth" });
+    window.scrollTo({ top: 0, behavior: "smooth" });
   }
 
-  function backToSelection(){
+  function backToSelection() {
     setSelectedCategory(null);
   }
 
   return (
     <>
+      <div class="page-title">
+        <h3>{selectedCategory === null ? "Menü" : "Speisekarte"}</h3>
+      </div>
+
       {selectedCategory === null ? (
         <CategoryList
           onSelectCategory={categorySelector}
@@ -28,10 +32,14 @@ export default function MenuPage({ items, categories }) {
           {selectedCategory !== null && (
             <MenuCard
               backToSelection={backToSelection}
-              item={items.filter((item) => item.category.title === selectedCategory)}
+              item={items.filter(
+                (item) => item.category.title === selectedCategory,
+              )}
               categories={categories}
               onSelectCategory={categorySelector}
-              selectedCategory={categories.find(cat => cat.title === selectedCategory)}
+              selectedCategory={categories.find(
+                (cat) => cat.title === selectedCategory,
+              )}
             />
           )}
         </div>

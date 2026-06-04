@@ -35,9 +35,6 @@ const categoriesWithImages = categories.map(cat => ({
 
 <BaseLayout>
   <div class="page-container">
-    <div class="page-title">
-      <h3>Speisekarte</h3>
-    </div>
 
     <MenuPage items={items} categories={categoriesWithImages} client:load />
 
@@ -51,27 +48,6 @@ const categoriesWithImages = categories.map(cat => ({
       flex-direction: column;
       align-items: center;
       margin-top: 8.5rem;
-    }
-
-    .page-title {
-      font-size: clamp(1.8rem, 6vw, 3rem);
-      line-height: 2rem;
-      width: 100%;
-      display: flex;
-      flex-direction: row;
-      align-items: center;
-      justify-content: center;
-      gap: 1.5rem;
-    }
-
-    .page-title:before,
-    .page-title:after {
-    content: "";
-    height: 1px;
-    max-width: 25%;
-    opacity: 0.4;
-    background: linear-gradient(to right, #0000, var(--color-piz-accent) 50%, #0000);
-    flex: 1 1 0%;
     }
 
     .menu-container {
