@@ -10,7 +10,7 @@ export default function MenuCard({
       <div className="flex flex-col lg:flex-row w-full max-w-350 bg-piz-card-bg py-5 px-5 sm:px-10 rounded-2xl gap-4">
         <button
           onClick={backToSelection}
-          className="sm-secondary-btn grid-btn self-start"
+          className="sm-secondary-btn grid-btn lg:self-center self-start"
         >
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -30,7 +30,7 @@ export default function MenuCard({
         </button>
         <div className="nav-items flex gap-8 h-15 pr-20 overflow-x-scroll pb-2 lg:pb-0 nav-scroll">
           {categories.map((cat) => (
-            <div className="flex" style={{ order: cat.order }}>
+            <div className="flex items-center" style={{ order: cat.order }}>
               <button
                 onClick={() => onSelectCategory(cat.title)}
                 className="cursor-pointer text-piz-accent navigation rounded-2xl"
