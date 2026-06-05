@@ -69,14 +69,14 @@ export default function MenuCard({
         {item.map((meal) => (
           <div key={meal._id} className="flex flex-col my-5">
             <div className="flex w-full justify-between">
-              <p className="text-2xl text-piz-text-bright">{meal.title}</p>
+              <p className="text-[clamp(1.1rem,3vw,1.5rem)] text-piz-text-bright">{meal.title}</p>
               <span className="flex-1 mb-2 mx-2 border-b border-dotted border-piz-text-mute"></span>{" "}
-              <p className="text-piz-accent self-end">
+              <p className="text-[clamp(1.25rem,3vw,1.5rem)] text-piz-accent self-end">
                 {priceConverter(meal.price)}
               </p>
             </div>
 
-            <p className="text-piz-text-mute wrap-break-word">
+            <p className="text-[clamp(0.9rem,3vw,1.25rem)] text-piz-text-mute wrap-break-word">
               {meal.ingredients}
             </p>
             {meal.allergy && (
