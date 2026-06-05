@@ -17,7 +17,7 @@ export default function MenuPage({ items, categories }) {
 
   return (
     <>
-      <div class="page-title">
+      <div className="page-title">
         <h3>{selectedCategory === null ? "Menü" : "Speisekarte"}</h3>
       </div>
 

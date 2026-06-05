@@ -5,6 +5,17 @@ import "../styles/global.css";
 
 <BaseLayout>
   <div class="contact">
+    
+    <div class="info">
+    <p class="section-title">Rufen Sie uns an:</p>
+    <p>Hans Muster</p>
+    <a href="mailto:nils@grischa-web.ch">kontakt@piz-patty.ch</a>
+    <a href="tel:+41799689805">+41 12 345 67 89</a>
+    <p>Standort: Chur, Graubünden</p>
+    <hr />
+  </div>
+</div>
+
   <div class="form-container">
     <div>
       <p class="section-title">Bei Fragen oder Anmerkungen können Sie sich gerne melden</p>
@@ -32,15 +43,7 @@ import "../styles/global.css";
     </form>
   </div>
 
-  <div class="info">
-    <p class="section-title">Unsere Kontaktangaben:</p>
-    <p>Hans Muster</p>
-    <a href="mailto:nils@grischa-web.ch">kontakt@piz-patty.ch</a>
-    <a href="tel:+41799689805">+41 12 345 67 89</a>
-    <p>Standort: Chur, Graubünden</p>
-    <hr />
-  </div>
-</div>
+  
 </BaseLayout>
 
 <style>
@@ -50,7 +53,7 @@ import "../styles/global.css";
     width: 100%;
     max-width: 1200px;
     justify-content: center;
-    margin: 150px auto;
+    margin: 150px auto 30px auto;
   }
 
   @media (max-width: 769px) {
@@ -63,6 +66,7 @@ import "../styles/global.css";
   .section-title{
     color: var(--color-piz-text-bright);
     font-size: clamp(1.3rem, 5vw, 1.8rem);
+    color: var(--color-piz-accent);
   }
 
   @media (max-width: 769px) {

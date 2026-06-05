@@ -39,10 +39,14 @@ export default function MenuCard({
         </button>
         <div className="nav-items flex gap-8 h-15 pr-20 overflow-x-scroll pb-2 lg:pb-0 nav-scroll">
           {categories.map((cat) => (
-            <div className="flex items-center" style={{ order: cat.order }}>
+            <div
+              key={cat._id}
+              className="flex items-center"
+              style={{ order: cat.order }}
+            >
               <button
                 onClick={() => onSelectCategory(cat.title)}
-                className="cursor-pointer text-piz-accent navigation rounded-2xl"
+                className={`cursor-pointer navigation rounded-2xl ${cat.title === selectedCategory.title ? "active" : "text-piz-text-bright"}`}
               >
                 {cat.title}
               </button>

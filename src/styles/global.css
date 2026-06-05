@@ -129,6 +129,17 @@ hr {
   );
 }
 
+.fade-in {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.fade-in.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
 /*MENU CARD NAVIGATIONBAR*/
 
 .page-title {
@@ -161,6 +172,12 @@ hr {
   position: relative;
   mask-image: linear-gradient(to right, black 85%, transparent);
   -webkit-mask-image: linear-gradient(to right, black 85%, transparent);
+}
+
+.nav-items .active{
+  color: var(--color-piz-accent);
+  border: 1px solid var(--color-piz-accent);
+  padding: 0.5rem 1rem
 }
 
 .nav-scroll::-webkit-scrollbar {

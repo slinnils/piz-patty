@@ -30,6 +30,24 @@ import Header from "../components/Header.astro";
     <footer id="footer">
       <Footer />
     </footer>
+
+    <script>
+      const observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add("visible");
+            }
+          });
+        },
+        { threshold: 0.3, rootMargin: "0px 0px -50px 0px" },
+      );
+
+      document.querySelectorAll(".fade-in").forEach((el) => {
+        observer.observe(el);
+      });
+    </script>
+    
   </body>
 </html>
 
