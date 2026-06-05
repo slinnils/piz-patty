@@ -9,6 +9,9 @@ import react from "@astrojs/react";
 export default defineConfig({
   vite: {
     plugins: [tailwindcss()],
+    ssr: {
+      noExternal: ['sanity'],
+    },
   },
 
   devToolbar: {
@@ -19,5 +22,6 @@ export default defineConfig({
     projectId: "8s3mk80d",
     dataset: "production",
     useCdn: false,
+    studioBasePath: "/admin",
   }), react()],
 });
