@@ -77,8 +77,6 @@ import logo from "../assets/piz-patty-logo.png";
   }
 
   @keyframes scrolled {
-    from {
-    }
     to {
       width: 80px;
       height: 80px;
@@ -113,6 +111,21 @@ import logo from "../assets/piz-patty-logo.png";
     animation: scrolled linear both;
     animation-timeline: scroll();
     animation-range: 0% 10%;
+  }
+
+  @media (max-width: 800px) {
+    #logo-img {
+      animation: scrolled-mobile linear both;
+      animation-timeline: scroll();
+      animation-range: 0% 10%;
+    }
+
+    @keyframes scrolled-mobile {
+      to {
+        width: 70px;
+        height: 70px;
+      }
+    }
   }
 
   h1 {
