@@ -1,6 +1,5 @@
 ---
 import { Image } from "astro:assets";
-import MainNavigation from "./MainNavigation.astro";
 import logo from "../assets/piz-patty-logo.png";
 ---
 
@@ -24,24 +23,30 @@ import logo from "../assets/piz-patty-logo.png";
     <div id="overlay" class="overlay"></div>
 
     <ul id="nav-links">
-      <li><a href="/">Home</a></li>
-      <li><a href="/menu">Menü</a></li>
-      <li><a href="/kontakt">Kontakt</a></li>
+      <li>
+        <a href="/">Home</a>
+      </li>
+      <li>
+        <a href="/menu">Menü</a>
+      </li>
+      <li>
+        <a href="/kontakt">Kontakt</a>
+      </li>
     </ul>
   </nav>
 </header>
 
 <script>
   /*HEADER:*/
-  const header = document.querySelector("header");
+  // const header = document.querySelector("header");
 
-  window.addEventListener("scroll", () => {
-    if (window.scrollY > 50) {
-      header.classList.add("scrolled");
-    } else {
-      header.classList.remove("scrolled");
-    }
-  });
+  // window.addEventListener("scroll", () => {
+  //   if (window.scrollY > 50) {
+  //     header.classList.add("scrolled");
+  //   } else {
+  //     header.classList.remove("scrolled");
+  //   }
+  // });
 
   /*NAVBAR:*/
   const toggle = document.getElementById("menu-toggle");
@@ -67,9 +72,17 @@ import logo from "../assets/piz-patty-logo.png";
     width: 100%;
     z-index: 10;
     padding: 1rem 0 0 1rem;
-    transition: all 0.3s ease;
     display: flex;
     gap: 1rem;
+  }
+
+  @keyframes scrolled {
+    from {
+    }
+    to {
+      width: 80px;
+      height: 80px;
+    }
   }
 
   @media (min-width: 1800px) {
@@ -77,6 +90,13 @@ import logo from "../assets/piz-patty-logo.png";
       max-width: 1800px;
       left: auto;
       right: auto;
+    }
+  }
+
+  @media (min-width: 800px) {
+    header {
+      background-color: rgba(0, 0, 0, 0.041);
+      backdrop-filter: blur(2px);
     }
   }
 
@@ -90,33 +110,15 @@ import logo from "../assets/piz-patty-logo.png";
     width: clamp(80px, 20vw, 120px);
     height: clamp(80px, 20vw, 120px);
     border-radius: 50%;
-    transition: all 0.3s ease;
+    animation: scrolled linear both;
+    animation-timeline: scroll();
+    animation-range: 0% 10%;
   }
 
   h1 {
     font-size: clamp(2rem, 6vw, 3rem);
     color: var(--color-piz-accent);
     text-shadow: 0 2px 8px var(--color-piz-card-bg);
-  }
-
-  header.scrolled {
-    height: auto;
-    padding: 0.2rem 2rem;
-    backdrop-filter: blur(4px);
-  }
-
-  header.scrolled #logo-img {
-    width: 65px;
-    height: 65px;
-    transition: all 0.3s ease;
-  }
-
-  @media (min-width: 800px) {
-    header.scrolled #nav-links {
-      font-size: clamp(1.2rem, 3vw, 1.5rem);
-      padding-right: 0;
-      transition: 550ms ease;
-    }
   }
 
   /*NAVBAR: */
@@ -182,9 +184,24 @@ import logo from "../assets/piz-patty-logo.png";
       background-color: transparent;
       backdrop-filter: blur(0px);
 
-      height: auto;
+      height: 3rem;
       flex-direction: row;
       gap: 2rem;
+
+      animation: shrink-nav linear 500ms both;
+      animation-timeline: scroll();
+      animation-range: 0% 10%;
+    }
+  }
+
+  @keyframes shrink-nav {
+    from {
+      height: 3rem;
+      font-size: clamp(1.5rem, 3vw, 2rem);
+    }
+    to {
+      height: 2rem;
+      font-size: clamp(1rem, 2.5vw, 1.5rem);
     }
   }
 
