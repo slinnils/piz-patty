@@ -1,15 +1,53 @@
 ---
 import storeFront from "../assets/piz-patty-laden.png";
 import { sanityClient } from "sanity:client";
-import { Image } from 'astro:assets';
+import { Image } from "astro:assets";
 
 const openingHours = await sanityClient.fetch(
   '*[_type == "openingHours"][0]{montagBisDonnerstag, freitagUndSamstag, sonntag}',
 );
+
+function isOpen() {
+  let isOpen = "false";
+
+  const time = new Date().getHours();
+  const date = new Date().getDay();
+
+  // TEST, PLEASE DELETE
+  // const testDate = new Date("2026-11-12T22:30:00");
+  // const time = testDate.getHours();
+  // const date = testDate.getDay();
+  // TEST, PLEASE DELETE
+
+  if (date === 5 || date === 6) {
+    if (time >= 11 && time < 23) {
+      isOpen = "Geöffnet";
+    } else {
+      isOpen = "Geschlossen";
+    }
+  } else {
+    if (time >= 11 && time < 22) {
+      isOpen = "Geöffnet";
+    } else {
+      isOpen = "Geschlossen";
+    }
+  }
+
+  return isOpen;
+}
 ---
 
 <section>
-  <div class="hrs-container fade-in">
+  <div class="hrs-container fade-in flex flex-col">
+
+    <div class="ml-auto flex items-center gap-2">
+      <div
+        id="open-indicator"
+        class=`${isOpen() === "Geöffnet" ? "bg-green-500" : "bg-red-600"} w-2 h-2 rounded-full`
+      ></div>
+      <p class="text-piz-text-bright">{isOpen()}</p>
+    </div>
+
     <h3>Unsere Öffnungszeiten:</h3>
     <dl class="opening-hours">
       <div>
@@ -37,7 +75,12 @@ const openingHours = await sanityClient.fetch(
       referrerpolicy="no-referrer-when-downgrade"
     >
     </iframe>
-    <Image class:list="store-img fade-in" src={storeFront} alt="Bild vom Ladeneingang" format="webp"/>
+    <Image
+      class:list="store-img fade-in"
+      src={storeFront}
+      alt="Bild vom Ladeneingang"
+      format="webp"
+    />
   </div>
 </section>
 
@@ -70,6 +113,19 @@ const openingHours = await sanityClient.fetch(
   h3 {
     font-size: 1.5rem;
     font-weight: 400;
+  }
+
+  #open-indicator {
+    animation: blink 2s linear 1s infinite;
+  }
+
+  @keyframes blink {
+    0%, 100% {
+      opacity: 0.5;
+    }
+    50% {
+      opacity: 1;
+    }
   }
 
   .opening-hours div {
